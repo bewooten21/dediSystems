@@ -16,7 +16,7 @@
               <li>ssssssssssss</li>
           </ul>
       </div>
-      <h1>Reset Password</h1>
+      <h1>Account</h1>
     <h2><?php echo " ".$_SESSION['user']->getfName(). " " .$_SESSION['user']->getlName() ; ?></h2>
     <form class="form-horizontal" action="index.php" method='post'>
       <input type="hidden" name="action" value="valUpdateUser">
@@ -78,6 +78,12 @@
     <div class="form-group">        
       <div class="col-sm-offset-4 col-sm-10">
         <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+      
+      <div class="form-group">        
+      <div class="col-sm-offset-4 col-sm-10">
+        <a href='index.php?action=resetPw'>Change Password</a>
       </div>
     </div>
   
