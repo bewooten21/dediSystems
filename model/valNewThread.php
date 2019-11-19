@@ -32,7 +32,7 @@ if ($isValid === false) {
     exit();
 }else{
     thread_db::add_thread('', $_SESSION['user']->getUsername(), $subject, $body);
-    include('view/forum.php')
+    include('view/forum.php');
 }
 
 
