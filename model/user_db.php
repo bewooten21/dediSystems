@@ -46,20 +46,29 @@ class user_db {
         return $user;
     }
 
-    public static function get_user_by_username($uName) {
+    public static function get_user_by_username($un) {
         $db = Database::getDB();
-        $query = 'SELECT userName
+        $query = 'SELECT *
               FROM user
-              WHERE userName= :uName';
+              WHERE username= :un';
 
         $statement = $db->prepare($query);
-        $statement->bindValue(':uName', $uName);
+        $statement->bindValue(':un', $un);
         $statement->execute();
-        $result = $statement->fetch();
+        $row = $statement->fetch();
 
+        $id = $row['userId'];
+        $un = $row['username'];
+            $hashed_pw = $row['password'];
+            $email=$row['email'];
+            $fName=$row['fName'];
+            $lName=$row['lName'];
+            $roleId=$row['roleId'];
+        
+        $user= new user($id, $fName, $lName, $un,$email, $hashed_pw,$roleId );
         $statement->closeCursor();
         
-        return $result;
+        return $user;
     }
 
    
@@ -79,12 +88,12 @@ class user_db {
             $statement->bindValue(':lName', $ln);
             $statement->bindValue(':roleId', $roleId);
             
-            $user= new user($id, $fName, $lName, $un,$email, $pw,$roleId );
+            
            
             $statement->execute();
             $statement->closeCursor();
             
-            return $user;
+            
             
         
     }
