@@ -1,7 +1,6 @@
 <?php
 
-require_once('model/user_db.php');
-require_once('model/user.php');
+
 
 $un = filter_input(INPUT_POST, 'un');
 $pw = filter_input(INPUT_POST, 'pw');

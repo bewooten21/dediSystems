@@ -92,10 +92,7 @@ class user_db {
            
             $statement->execute();
             $statement->closeCursor();
-            
-            
-            
-        
+             
     }
     
 

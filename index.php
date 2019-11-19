@@ -2,6 +2,7 @@
 
 require_once('model/user_db.php');
 require_once('model/user.php');
+
 session_start();
 $action = filter_input(INPUT_POST, 'action');
 if ($action === null) {
