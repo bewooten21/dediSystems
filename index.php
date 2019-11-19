@@ -135,7 +135,20 @@ switch ($action) {
         break;
     
     case 'newThread':
+        $body="";
+        $subject="";
+        $sClass="";
+        $sError="form-group";
+        $bError="form-group";
+        $s_error="";
+        $b_error="";
+        $bClass="";
         include('view/createThread.php');
+        die();
+        break;
+    
+    case 'valNewThread':
+        include('model/valNewThread.php');
         die();
         break;
    

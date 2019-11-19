@@ -6,7 +6,10 @@
             <file>file:/C:/xampp/htdocs/dediSystems/view/register.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/forum.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/index.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/model/valRegister.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/login.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/model/user_db.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/.gitignore</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/createThread.php</file>
         </group>
     </open-files>
