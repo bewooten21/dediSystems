@@ -79,10 +79,12 @@ class user_db {
             $statement->bindValue(':lName', $ln);
             $statement->bindValue(':roleId', $roleId);
             
-            
+            $user= new user($id, $fName, $lName, $un,$email, $pw,$roleId );
            
             $statement->execute();
             $statement->closeCursor();
+            
+            return $user;
             
         
     }

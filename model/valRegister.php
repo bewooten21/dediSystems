@@ -109,10 +109,10 @@ if ($isValid === false) {
     $options = ['cost' => 11];
     $hashedPw = password_hash($pw, PASSWORD_BCRYPT, $options);
 
-    user_db::add_user('', $un, $hashedPw, $email, $fn, $ln, 2);
+    $user = user_db::add_user('', $un, $hashedPw, $email, $fn, $ln, 2);
 
-    $_SESSION['username'] = $un;
-    include('home.php');
+    $_SESSION['user'] = $user;
+    header("Location: index.php?action=viewAccount");
 }
         
 
