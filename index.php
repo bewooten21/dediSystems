@@ -133,7 +133,12 @@ switch ($action) {
         include('model/valUpdateUser.php');
         die();
         break;
-        
+    
+    case 'newThread':
+        include('view/createThread.php');
+        die();
+        break;
+   
 }
      
 

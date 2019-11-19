@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/individualCapstone/view/register.php</file>
-            <file>file:/C:/xampp/htdocs/individualCapstone/model/valRegister.php</file>
-            <file>file:/C:/xampp/htdocs/individualCapstone/model/valUpdateUser.php</file>
-            <file>file:/C:/xampp/htdocs/individualCapstone/model/user.php</file>
-            <file>file:/C:/xampp/htdocs/individualCapstone/model/user_db.php</file>
-            <file>file:/C:/xampp/htdocs/individualCapstone/view/resetPw.php</file>
-            <file>file:/C:/xampp/htdocs/individualCapstone/model/valLogin.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

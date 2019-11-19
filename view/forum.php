@@ -11,9 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
-        <?php
-        echo "forum";
-        ?>
+        <a href='index.php?action=newThread'>New Thread</a>
         <?php include('footer.php'); ?>
     </body>
 </html>
