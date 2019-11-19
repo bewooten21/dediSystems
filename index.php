@@ -90,6 +90,7 @@ switch ($action) {
         break;
     
      case 'viewAccount':
+         $message="";
         include('view/account.php');
         die();
         break;
@@ -121,6 +122,7 @@ switch ($action) {
     
     case 'resetPw':
         $pw="";
+        $p="";
         $pwClass = "";
         $pwError = "form-group";
         $cpwClass = "";
@@ -128,6 +130,11 @@ switch ($action) {
         $pw_error = '';
         $cpw_error = '';
         include('view/resetPw.php');
+        die();
+        break;
+    
+    case 'valResetPw':
+        include('model/valResetPw.php');
         die();
         break;
     case 'valUpdateUser':

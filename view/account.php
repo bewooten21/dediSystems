@@ -19,8 +19,7 @@
       <h1>Account</h1>
     <h2><?php echo " ".$_SESSION['user']->getfName(). " " .$_SESSION['user']->getlName() ; ?></h2>
     <p>
-      Are you ready to boilerstrap your cross-compatible buzzword? We're Sassy, flat and semantic,
-      so what are you waiting for?
+      <?php echo $message ?>
     </p>
     <br />
     <p>

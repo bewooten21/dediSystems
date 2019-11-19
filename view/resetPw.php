@@ -19,7 +19,7 @@
       <h1>Reset Password</h1>
     <h2><?php echo " ".$_SESSION['user']->getfName(). " " .$_SESSION['user']->getlName() ; ?></h2>
     <form class="form-horizontal" action="index.php" method='post'>
-      <input type="hidden" name="action" value="valRegister">
+      <input type="hidden" name="action" value="valResetPw">
     
     <div class="<?php echo $pwError; ?>">
       <label class="control-label col-sm-4" for="pw">New Password:</label>
@@ -36,7 +36,7 @@
       <div class="<?php echo $cpwError; ?>">
       <label class="control-label col-sm-4" for="pw">Confirm password:</label>
       <div class="col-sm-4">          
-        <input type="password" class="form-control" id="cpw" placeholder="Confirm password" name="cpw" value="<?php echo htmlspecialchars($pw); ?>" >
+        <input type="password" class="form-control" id="cpw" placeholder="Confirm password" name="cpw" value="<?php echo htmlspecialchars($p); ?>" >
         <span class="<?php echo $cpwClass; ?>"></span>
       </div>
       <div class="col-sm-2">

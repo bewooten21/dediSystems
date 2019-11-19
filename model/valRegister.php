@@ -109,7 +109,7 @@ if ($isValid === false) {
     $options = ['cost' => 11];
     $hashedPw = password_hash($pw, PASSWORD_BCRYPT, $options);
 
-     user_db::add_user('', $un, $hashedPw, $email, $fn, $ln, 3);
+     user_db::add_user('', $un, $hashedPw, $email, $fn, $ln, 1);
      $user = user_db::get_user_by_username($un);
 
     $_SESSION['user'] = $user;
