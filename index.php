@@ -2,6 +2,8 @@
 
 require_once('model/user_db.php');
 require_once('model/user.php');
+require_once('model/thread_db.php');
+
 
 session_start();
 $action = filter_input(INPUT_POST, 'action');
@@ -85,6 +87,7 @@ switch ($action) {
        header("Location: home.php");
 
     case 'forum':
+        $threads= thread_db::get_threads();
         include('view/forum.php');
         die();
         break;

@@ -1,4 +1,5 @@
 <?php
+require('thread.php');
 require_once('database.php');
 
 class thread_db{
@@ -23,6 +24,25 @@ class thread_db{
             $statement->execute();
             $statement->closeCursor();
              
+    }
+    
+    public static function get_threads(){
+        
+        $db = Database::getDB();
+
+        $queryUsers = 'SELECT * FROM thread';
+        $statement = $db->prepare($queryUsers);
+        $statement->execute();
+        $rows = $statement->fetchAll();
+        $threads = [];
+
+        foreach ($rows as $value) {
+            $threads[$value['threadId']]= new thread($value['threadId'], $value['author'], $value['time'], $value['subject'], $value['body'], $value['numPosts']);
+        }
+        $statement->closeCursor();
+
+        return $threads;
+        
     }
 }
 

@@ -11,7 +11,34 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
+        <div class="container">
+            <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Subject</th>
+      <th scope="col">Author</th>
+      <th scope="col">Posts</th>
+      <th scope="col">Time</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+      <?php foreach ($threads as $t) : ?>
+    <tr>
+
+      <td><?php echo $t->getSubject(); ?></td>
+      <td><?php echo $t->getAuthor() ; ?></td>
+      <td><?php echo $t->getPosts() ; ?></td>
+      <td><?php echo $t->getTime() ; ?></td>
+
+    </tr>
+    <?php endforeach; ?>
+  
+  </tbody>
+</table>
         <a href='index.php?action=newThread'>New Thread</a>
+        </div>
         <?php include('footer.php'); ?>
     </body>
 </html>
