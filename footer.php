@@ -43,7 +43,9 @@
 <div class="widget no-box">
 <h5 class="widget-title">Get Started<span></span></h5>
 <p>Get access to your full Training and Marketing Suite.</p>
+<?php if(!isset($_SESSION['user'])) { ?>
 <a class="btn" href="index.php?action=register" >Register Now</a>
+<?php } ?>
 </div>
 </div>
 

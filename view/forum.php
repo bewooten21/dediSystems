@@ -11,9 +11,9 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
-        <div class="container">
-            <table class="table table-hover">
-  <thead>
+        <div class="container" id="white">
+            <table class="table table-bordered table-hover table-striped ">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Subject</th>
       <th scope="col">Author</th>

@@ -9,15 +9,14 @@
     
 <div class="jumbotron">
   <div class="container">
-    <h1>Ready. Set. Code.</h1>
+    <h1></h1>
     <p>
-      Are you ready to boilerstrap your cross-compatible buzzword? We're Sassy, flat and semantic,
-      so what are you waiting for?
+      
     </p>
     <br />
     <p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Download Free Trial »</a>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a>
+      <a class="btn btn-primary btn-lg" href="#" role="button"></a>
+      <a class="btn btn-primary btn-lg" href="#" role="button"></a>
     </p>
   </div>
 </div>
@@ -26,7 +25,7 @@
   <div class="row">
     <div class="col-md-4">
       <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
-      <h3>Cloud Computable</h3>
+      <h3></h3>
       <p>
         Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
         tortor mauris condimentum nibh.
@@ -34,12 +33,12 @@
     </div>
     <div class="col-md-4">
       <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-      <h3>Backwards Compatible</h3>
+      <h3></h3>
       <p>Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Lorem ipsum dolor.</p>
     </div>
     <div class="col-md-4">
       <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
-      <h3>GUI Free</h3>
+      <h3></h3>
       <p>
         Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
         tortor mauris condimentum nibh.

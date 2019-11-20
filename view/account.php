@@ -8,7 +8,7 @@
     <?php include('nav.php') ?>
     
     <div class="jumbotron" id="white">
-  <div class="container">
+  <div class="container" id="account">
       <div class="sidebarUsers"> 
           <ul style="list-style: none;">
               <li><a href='index.php?action=viewOrders'>Orders</a></li>
