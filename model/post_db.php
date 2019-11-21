@@ -39,7 +39,7 @@ public static function add_post($postId, $threadId, $author, $body) {
         $posts = [];
 
         foreach ($rows as $value) {
-            $posts[$value['postId']]= new thread($value['postId'],$value['threadId'],$value['body'], $value['author'], $value['time']);
+            $posts[$value['postId']]= new post($value['postId'],$value['threadId'],$value['body'], $value['author'], $value['time']);
         }
         $statement->closeCursor();
 

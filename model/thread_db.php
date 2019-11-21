@@ -62,6 +62,23 @@ class thread_db{
         
     }
     
+    public static function get_thread_byId($id){
+        
+        $db = Database::getDB();
+        
+        $query = 'SELECT * from thread 
+                  WHERE threadId = :id  
+                 ';
+                
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+         $statement->execute();
+         $row= $statement->fetch();
+         $statement->closeCursor();
+         
+         $thread= new thread($row['threadId'], $row['author'], $row['time'], $row['subject'], $row['body'], $row['numPosts']);
+         return $thread;
+    }
     
     
     
