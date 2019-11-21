@@ -44,5 +44,26 @@ class thread_db{
         return $threads;
         
     }
+    
+    public static function get_last_postbyId(){
+        
+         $db = Database::getDB();
+         
+         $query= 'select threadId from thread where 
+                 threadId =(SELECT LAST_INSERT_ID())';
+         
+         $statement = $db->prepare($query);
+         
+         $statement->execute();
+         $id = $statement->fetch();
+         $statement->closeCursor();
+         
+         return $id['threadId'];
+        
+    }
+    
+    
+    
+    
 }
 

@@ -1,5 +1,6 @@
 <?php
 require_once 'model/thread_db.php';
+require_once 'model/post_db.php';
 $subject = filter_input(INPUT_POST, 'subject');
 $body = filter_input(INPUT_POST, 'body');
 
@@ -32,6 +33,8 @@ if ($isValid === false) {
     exit();
 }else{
     thread_db::add_thread('', $_SESSION['user']->getUsername(), $subject, $body);
+    $threadId= thread_db::get_last_postbyId();
+    post_db::add_post('', $threadId, $_SESSION['user']->getUsername(), $body);
     header("Location: index.php?action=forum");
     
 }

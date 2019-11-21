@@ -3,6 +3,7 @@
 require_once('model/user_db.php');
 require_once('model/user.php');
 require_once('model/thread_db.php');
+require_once('model/post_db.php');
 
 
 session_start();
@@ -160,6 +161,15 @@ switch ($action) {
     
     case 'valNewThread':
         include('model/valNewThread.php');
+        die();
+        break;
+    
+    case 'viewThread':
+        
+        $id = filter_input(INPUT_GET, 'id');
+        
+        $posts= post_db::get_posts_by_threadId($id);
+        include ('views/viewJob.php');
         die();
         break;
    

@@ -27,7 +27,7 @@ and open the template in the editor.
       <?php foreach ($threads as $t) : ?>
     <tr>
 
-      <td><?php echo $t->getSubject(); ?></td>
+      <td><a href="index.php?action=viewThread&amp;id=<?php echo $t->getId(); ?>"><?php echo $t->getSubject(); ?></td>
       <td><?php echo $t->getAuthor() ; ?></td>
       <td><?php echo $t->getPosts() ; ?></td>
       <td><?php echo $t->getTime() ; ?></td>
