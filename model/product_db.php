@@ -5,11 +5,11 @@ require_once('database.php');
 
 class product_db {
 
-    public static function addProduct($prodId, $price, $image, $prodDesc, $prodName) {
+    public static function addProduct($prodId, $price, $image, $prodDesc, $prodName, $q) {
         $db = Database::getDB();
 
-        $query = 'INSERT into product(prodId, price, image, prodDesc, prodName)
-                    VALUES(:prodId, :price, :image, :prodDesc, :prodName)';
+        $query = 'INSERT into product(prodId, price, image, prodDesc, prodName, quantity)
+                    VALUES(:prodId, :price, :image, :prodDesc, :prodName, :q)';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':prodId', $prodId);
@@ -17,6 +17,7 @@ class product_db {
         $statement->bindValue(':image', $image);
         $statement->bindValue(':prodDesc', $prodDesc);
         $statement->bindValue(':prodName', $prodName);
+        $statement->bindValue(':q', $q);
 
         $statement->execute();
         $statement->closeCursor();
@@ -66,7 +67,7 @@ class product_db {
         $products = [];
         
         foreach($rows as $value){
-            $products[$value['prodId']]= new product($value['prodId'], $value['price'],$value['image'], $value['prodDesc'], $value['prodName']);
+            $products[$value['prodId']]= new product($value['prodId'], $value['price'],$value['image'], $value['prodDesc'], $value['prodName'],$value['quantity']);
         }
         $statement->closeCursor();
         return $products;
@@ -82,13 +83,13 @@ class product_db {
         $statement->bindValue(':id', $id);
         $statement->execute();
         $row = $statement->fetch();
-        $product= new product($row['prodId'],$row['price'],$row['image'],$row['prodDesc'],$row['prodName']);
+        $product= new product($row['prodId'],$row['price'],$row['image'],$row['prodDesc'],$row['prodName'],$row['quantity']);
         
         $statement->closeCursor();
         return $product;
     }
     
-    public static function updateProduct($prodId, $price, $image, $prodDesc, $prodName){
+    public static function updateProduct($prodId, $price, $image, $prodDesc, $prodName, $quantity){
         
         $db = Database::getDB();
         
@@ -96,7 +97,8 @@ class product_db {
                   SET price = :price,
                   image = :image,
                   prodDesc = :prodDesc,
-                  prodName = :prodName
+                  prodName = :prodName,
+                  quantity = :quantity
                   WHERE prodId = :prodId';
         
         $statement = $db->prepare($query);
@@ -105,6 +107,7 @@ class product_db {
         $statement->bindValue(':image', $image);
         $statement->bindValue(':prodDesc', $prodDesc);
         $statement->bindValue(':prodName', $prodName);
+        $statement->bindValue(':quantity', $quantity);
 
         $statement->execute();
         $statement->closeCursor();

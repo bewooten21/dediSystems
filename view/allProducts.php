@@ -21,6 +21,7 @@ and open the template in the editor.
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
       <th scope="col">Image</th>
       
       
@@ -33,6 +34,7 @@ and open the template in the editor.
       <td><?php echo $p->getName(); ?></td>
       <td><?php echo $p->getPrice() ; ?></td>
       <td><?php echo $p->getDesc() ; ?></td>
+      <td><?php echo $p->getQuantity() ; ?></td>
       <td><img height="100" width="100" src='<?php echo $p->getImage() ; ?>'> </td>
       <td>
           <form action="index.php" method="post">

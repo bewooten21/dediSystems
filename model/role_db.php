@@ -12,7 +12,7 @@ class role_db{
         $statement = $db->prepare($query);
          
          $statement->execute();
-         $roles= $statement->fetch();
+         $roles= $statement->fetchAll();
          $statement->closeCursor();
          
          return $roles;

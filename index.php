@@ -208,6 +208,10 @@ switch ($action) {
         break;
     
     case 'addProduct':
+        $q="";
+        $qClass="";
+        $qError="form-group";
+        $q_error="";
         $nameClass = "";
         $nameError = "form-group";
         $name="";
@@ -247,6 +251,9 @@ switch ($action) {
         $pd_error="";
         $price_error="";
         $image_error="";
+        $qClass="";
+        $qError="form-group";
+        $q_error="";
         include('view/editProduct.php');
         die();
         break;
@@ -288,6 +295,11 @@ switch ($action) {
         $id=filter_input(INPUT_POST, 'id');
         $user= user_db::get_user_by_id($id);
         include('view/editUser.php');
+        die();
+        break;
+    
+    case'valAdminUpdateUser':
+        include('model/valAdminUpdateUser.php');
         die();
         break;
         

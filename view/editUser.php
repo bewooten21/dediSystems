@@ -15,7 +15,7 @@ and open the template in the editor.
         <div class="container">
   <h2>Edit <?php echo $user->getFName(). " " . $user->getLName() ; ?></h2>
   <form class="form-horizontal" action="index.php" method='post' enctype="multipart/form-data">
-      <input type="hidden" name="action" value="valUpdateProduct">
+      <input type="hidden" name="action" value="valAdminUpdateUser">
       <input type="hidden" name="id" value="<?php echo $user->getId(); ?>">
     <div class="<?php echo $fnError; ?>">
       <label class="control-label col-sm-4" for="fn">First Name:</label>
@@ -74,7 +74,15 @@ and open the template in the editor.
       <div class="<?php echo $roleError; ?>">
       <label class="control-label col-sm-4" for="role">Role:</label>
       <div class="col-sm-4">          
-        <input type="text" class="form-control" id="role" placeholder="Set product price" name="role" value="<?php echo htmlspecialchars($user->getRole()); ?>">
+        <select id="roleId" name="roleId" >
+                                    
+                   
+                                  <?php foreach ($roles as $r) : ?>
+                                    <option value="<?php echo $r['roleId'] ?>"> <?php echo $r['roleName'];?> </option>
+                                    <?php endforeach; ?>  
+                                    
+                                    
+                                </select>
         <span class="<?php echo $roleClass; ?>"></span>
       </div>
       <div class="col-sm-2">

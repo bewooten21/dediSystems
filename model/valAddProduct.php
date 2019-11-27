@@ -4,6 +4,7 @@ require_once 'model/product_db.php';
 
 $name = filter_input(INPUT_POST, 'name');
 $pd = filter_input(INPUT_POST, 'pd');
+$q = filter_input(INPUT_POST, 'quantity');
 $price = filter_input(INPUT_POST, 'price');
 $image = $_FILES['image'];
 $temp = $_FILES['image']['name'];
@@ -27,6 +28,17 @@ if ($name === "") {
     $nameClass = "glyphicon glyphicon-ok form-control-feedback";
     $nameError = "form-group has-success has-feedback";
     $name_error = "";
+}
+
+if($q===""){
+    $q_error = "Required";
+    $qClass = "glyphicon glyphicon-remove form-control-feedback";
+    $qError = "form-group has-error has-feedback";
+    $isValid = false;
+}else {
+    $qClass = "glyphicon glyphicon-ok form-control-feedback";
+    $qError = "form-group has-success has-feedback";
+    $q_error = "";
 }
 
 
@@ -77,13 +89,14 @@ if ($isValid === false) {
     include("view/addProduct.php");
     exit();
 } else if ($isValid === true) {
-    product_db::addProduct('', $price, $imageName, $pd, $name);
+    product_db::addProduct('', $price, $imageName, $pd, $name,$q);
     $lastProd = product_db::getLastProduct_byId();
     
     $newName = $lastProd. '.'.$file_ext;
     move_uploaded_file($file_tmp, "images/" . $newName);
     $image ='images/'. $newName;
     product_db::updateImage($lastProd, $image);
+    header("Location: index.php?action=viewProducts");
     
 }
 

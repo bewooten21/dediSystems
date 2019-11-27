@@ -4,6 +4,7 @@ $id = filter_input(INPUT_POST, 'id');
 $name = filter_input(INPUT_POST, 'name');
 $pd = filter_input(INPUT_POST, 'pd');
 $price = filter_input(INPUT_POST, 'price');
+$q=filter_input(INPUT_POST, 'quantity');
 
 
 $extensions = array("jpeg", "jpg", "png", "gif");
@@ -19,6 +20,17 @@ if ($name === "") {
     $nameClass = "glyphicon glyphicon-ok form-control-feedback";
     $nameError = "form-group has-success has-feedback";
     $name_error = "";
+}
+
+if($q===""){
+    $q_error = "Required";
+    $qClass = "glyphicon glyphicon-remove form-control-feedback";
+    $qError = "form-group has-error has-feedback";
+    $isValid = false;
+}else {
+    $qClass = "glyphicon glyphicon-ok form-control-feedback";
+    $qError = "form-group has-success has-feedback";
+    $q_error = "";
 }
 
 
@@ -81,15 +93,15 @@ if ($isValid === false) {
 } else if ($isValid === true) {
     $product = product_db::getProduct_byId($id);
     if (($_FILES['image']['name'] === "")) {
-        product_db::updateProduct($product->getId(), $price, $product->getImage(), $pd, $name);
-        header("Location: index.php?action=shop");
+        product_db::updateProduct($product->getId(), $price, $product->getImage(), $pd, $name, $q);
+        header("Location: index.php?action=viewProducts");
     } else if (($_FILES['image']['name'] != "")) {
         $newName = $id . '.' . $file_ext;
         move_uploaded_file($file_tmp, "images/" . $newName);
         $image = 'images/' . $newName;
         
-        product_db::updateProduct($product->getId(), $price, $image, $pd, $name);
-        header("Location: index.php?action=shop");
+        product_db::updateProduct($product->getId(), $price, $image, $pd, $name, $q);
+        header("Location: index.php?action=viewProducts");
     }
 }
 

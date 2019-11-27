@@ -1,16 +1,25 @@
 <?php
 
 class product{
-    private $id, $price, $image, $desc, $name;
+    private $id, $price, $image, $desc, $name, $quantity;
     
-    public function __construct($id, $price, $image, $desc, $name){
+    public function __construct($id, $price, $image, $desc, $name, $quantity){
         $this->id=$id;
         $this->price=$price;
         $this->image=$image;
         $this->desc=$desc;
         $this->name=$name;
+        $this->quantity=$quantity;
     }
-    function getId() {
+    function getQuantity() {
+        return $this->quantity;
+    }
+
+    function setQuantity($quantity) {
+        $this->quantity = $quantity;
+    }
+
+        function getId() {
         return $this->id;
     }
 

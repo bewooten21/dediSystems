@@ -57,6 +57,29 @@ and open the template in the editor.
       
     </div>
       
+      <div class="<?php echo $qError; ?>">
+                    <label class="control-label col-sm-4" for="quantity">Quantity:</label>
+                    <div class="col-sm-4">          
+                        <select name="quantity">
+                            <option value="<?php echo $product->getQuantity() ?>"> <?php echo $product->getQuantity() ?> </option>
+                            <?php
+                            for ($i = 1; $i <= 20; $i++) {
+                                ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                        <span class="<?php echo $qClass; ?>"></span>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="error">
+                            <?php echo $q_error; ?>
+                        </p>
+                    </div>
+
+                </div>
+      
       <div class="form-group">
       <label class="control-label col-sm-4" for="image">Update Image:</label>
       <div class="col-sm-4">          
