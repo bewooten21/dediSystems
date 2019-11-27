@@ -198,6 +198,36 @@ switch ($action) {
 
         die();
         break;
+        
+    case 'shop':
+        include('view/shop.php');
+        die();
+        break;
+    
+    case 'addProduct':
+        $nameClass = "";
+        $nameError = "form-group";
+        $name="";
+        $pdClass="";
+        $pdError="form-group";
+        $pd="";
+        $priceError="form-group";
+        $priceClass="";
+        $price="";
+        $name_error="";
+        $pd_error="";
+        $price_error="";
+        $image_error="";
+        include('view/addProduct.php');
+        die();
+        break;
+    
+    case 'valAddProduct':
+        include('model/valAddProduct.php');
+        die();
+        break;
+        
+        
 }
      
 

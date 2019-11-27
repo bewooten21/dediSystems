@@ -16,6 +16,7 @@ if($subject===""){
 }else {
     $sClass = "glyphicon glyphicon-ok form-control-feedback";
     $sError = "form-group has-success has-feedback";
+    $s_error = "";
 }
 
 if($body===""){
@@ -26,6 +27,7 @@ if($body===""){
 }else {
     $bClass = "glyphicon glyphicon-ok form-control-feedback";
     $bError = "form-group has-success has-feedback";
+    $s_error = "";
 }
 
 if ($isValid === false) {
