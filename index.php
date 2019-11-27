@@ -4,6 +4,7 @@ require_once('model/user_db.php');
 require_once('model/user.php');
 require_once('model/thread_db.php');
 require_once('model/post_db.php');
+require_once('model/product_db.php');
 
 
 session_start();
@@ -200,6 +201,7 @@ switch ($action) {
         break;
         
     case 'shop':
+        $products= product_db::getAllProducts();
         include('view/shop.php');
         die();
         break;

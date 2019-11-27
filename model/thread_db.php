@@ -30,9 +30,9 @@ class thread_db{
         
         $db = Database::getDB();
 
-        $queryUsers = 'SELECT * FROM thread
+        $query = 'SELECT * FROM thread
                         ORDER by lastPost DESC' ;
-        $statement = $db->prepare($queryUsers);
+        $statement = $db->prepare($query);
         $statement->execute();
         $rows = $statement->fetchAll();
         $threads = [];
