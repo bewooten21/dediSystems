@@ -1,25 +1,25 @@
 <?php
 
 class user {
-    private $id, $fName, $lName, $username, $email, $password, $roleId;
+    private $id, $fName, $lName, $username, $email, $password, $role;
     
-    public function __construct($id, $fName, $lName, $username, $email, $password, $roleId) {
+    public function __construct($id, $fName, $lName, $username, $email, $password, $role) {
         $this->id = $id;
         $this->fName = $fName;
         $this->lName = $lName;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-        $this->roleId=$roleId;
+        $this->role=$role;
         
     }
     
-    function getRoleId() {
-        return $this->roleId;
+    function getRole() {
+        return $this->role;
     }
 
-    function setRoleId($roleId) {
-        $this->roleId = $roleId;
+    function setRole($role) {
+        $this->role = $role;
     }
 
         public function getId() {

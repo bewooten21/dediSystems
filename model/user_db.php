@@ -7,14 +7,16 @@ class user_db {
     public static function select_all() {
         $db = Database::getDB();
 
-        $queryUsers = 'SELECT * FROM user';
-        $statement = $db->prepare($queryUsers);
+        $query = 'SELECT * FROM user JOIN roles
+                  ON user.roleId = roles.roleId';
+        $statement = $db->prepare($query);
         $statement->execute();
         $rows = $statement->fetchAll();
         $users = [];
 
         foreach ($rows as $value) {
-            $users[$value['id']] = new user($value['id'], $value['firstName'], $value['lastName'], $value['userName'], $value['password'], $value['level']);
+            $users[$value['userId']] = new user($value['userId'], $value['fName'], $value['lName'], $value['username'],  $value['email'],$value['password'],$value['roleName']);
+            
         }
         $statement->closeCursor();
 
@@ -24,8 +26,9 @@ class user_db {
     public static function get_user_by_id($id) {
         $db = Database::getDB();
         $query = 'SELECT *
-              FROM user
-              WHERE userId= :id';
+              FROM user JOIN roles ON
+              user.roleId = roles.roleId
+              WHERE user.userId= :id';
 
         $statement = $db->prepare($query);
         $statement->bindValue(':id', $id);
@@ -37,9 +40,9 @@ class user_db {
             $email=$row['email'];
             $fName=$row['fName'];
             $lName=$row['lName'];
-            $roleId=$row['roleId'];
+            $role=$row['roleName'];
         
-        $user= new user($id, $fName, $lName, $un,$email, $hashed_pw,$roleId );
+        $user= new user($id, $fName, $lName, $un,$email, $hashed_pw,$role );
         
         $statement->closeCursor();
 
@@ -205,7 +208,9 @@ class user_db {
      public static function login($username, $password) {
         $db = Database::getDB();
 
-        $query = 'SELECT * FROM user WHERE username= :username';
+        $query = 'SELECT * FROM user JOIN roles
+                 ON user.roleId = roles.roleId
+                 WHERE user.username= :username';
         $statement = $db->prepare($query);
         $statement->bindValue(':username', $username);
         //$statement->bindValue(':password', $password);
@@ -220,9 +225,9 @@ class user_db {
             $email=$row['email'];
             $fName=$row['fName'];
             $lName=$row['lName'];
-            $roleId=$row['roleId'];
+            $role=$row['roleName'];
             if (password_verify($password, $hashed_pw)) {
-                $user= new user($id, $fName, $lName, $un,$email, $hashed_pw,$roleId );
+                $user= new user($id, $fName, $lName, $un,$email, $hashed_pw,$role );
                 return $user;
             } else {
                 return false;

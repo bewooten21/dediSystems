@@ -5,6 +5,7 @@ require_once('model/user.php');
 require_once('model/thread_db.php');
 require_once('model/post_db.php');
 require_once('model/product_db.php');
+require_once('model/role_db.php');
 
 
 session_start();
@@ -254,6 +255,43 @@ switch ($action) {
         include('model/valUpdateProduct.php');
         die();
         break;
+    
+    case 'viewProducts':
+        $products= product_db::getAllProducts();
+        include('view/allProducts.php');
+        die();
+        break;
+    
+    case 'viewUsers':
+        $users= user_db::select_all();
+        include('view/allUsers.php');
+        die();
+        break;
+    
+    case 'editUser':
+        $emailClass = "";
+        $emailError = "form-group";
+        $unClass = "";
+        $unError = "form-group";
+        $fnClass = "";
+        $fnError = "form-group";
+        $lnClass = "";
+        $lnError = "form-group";
+        $roleError = "form-group";
+        $roleClass = "";
+        $email_error = '';
+        $un_error = '';
+        $fn_error = '';
+        $ln_error = '';
+        $role_error='';
+        $roles= role_db::getAll();
+        $id=filter_input(INPUT_POST, 'id');
+        $user= user_db::get_user_by_id($id);
+        include('view/editUser.php');
+        die();
+        break;
+        
+        
         
         
         

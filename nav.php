@@ -37,7 +37,26 @@
             <li><a href="#">Consulting</a></li>
           </ul>
         </li>
-        
+        <?php if(isset($_SESSION['user'])) { ?>
+        <?php if($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+        <li class="dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ><span ></span>Admin<span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li><a href='index.php?action=viewAccount'>Account</a></li>
+            <li><a href="index.php?action=viewProducts">View Products</a></li>
+            <li><a href="index.php?action=viewUsers">View Users</a></li>
+            <li><a href="index.php?action=viewUserComments">View Messages</a></li>
+          </ul>
+        <?php } ?></li>
+        <?php } ?>
         
          <?php if(isset($_SESSION['user'])) { ?>
         <li class="dropdown">
