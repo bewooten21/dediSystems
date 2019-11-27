@@ -24,6 +24,14 @@ switch ($action) {
         break;
 
     case 'contact':
+        $mClass="";
+        $mError="form-group";
+        $m_error="";
+        $message="";
+        $emailClass="";
+        $emailError="form-group";
+        $email_error="";
+        $email="";
         include('view/contact.php');
         die();
         break;
