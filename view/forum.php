@@ -18,7 +18,7 @@ and open the template in the editor.
       <th scope="col">Subject</th>
       <th scope="col">Author</th>
       <th scope="col">Posts</th>
-      <th scope="col">Time</th>
+      <th scope="col">Last Post</th>
       
       
     </tr>

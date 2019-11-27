@@ -88,6 +88,7 @@ switch ($action) {
         header("Location: home.php");
 
     case 'forum':
+        
         $threads = thread_db::get_threads();
         include('view/forum.php');
         die();
@@ -185,9 +186,13 @@ switch ($action) {
             include ('view/viewThread.php');
         }else if($body !="" ){
             post_db::add_post('', $threadId, $_SESSION['user']->getUsername(), $body);
+            $postCount= thread_db::getPostCount($threadId);
             $postError = "Enter comment";
             $thread = thread_db::get_thread_byId($threadId);
             $posts = post_db::get_posts_by_threadId($threadId);
+            $lastPost=thread_db::getLastPost($threadId);
+            thread_db::setLastPost($threadId, $lastPost);
+            thread_db::setPostCount($threadId, $postCount);
             include ('view/viewThread.php');
         }
 

@@ -30,14 +30,15 @@ class thread_db{
         
         $db = Database::getDB();
 
-        $queryUsers = 'SELECT * FROM thread';
+        $queryUsers = 'SELECT * FROM thread
+                        ORDER by lastPost DESC' ;
         $statement = $db->prepare($queryUsers);
         $statement->execute();
         $rows = $statement->fetchAll();
         $threads = [];
 
         foreach ($rows as $value) {
-            $threads[$value['threadId']]= new thread($value['threadId'], $value['author'], $value['time'], $value['subject'], $value['body'], $value['numPosts']);
+            $threads[$value['threadId']]= new thread($value['threadId'], $value['author'], $value['lastPost'], $value['subject'], $value['body'], $value['numPosts']);
         }
         $statement->closeCursor();
 
@@ -62,6 +63,40 @@ class thread_db{
         
     }
     
+    public static function getLastPost($threadId){
+        $db = Database::getDB();
+         
+         $query= 'select time from post where 
+                 threadId = :threadId
+                 ORDER by time desc
+                 LIMIT 1';
+         
+         $statement = $db->prepare($query);
+         $statement->bindValue(':threadId', $threadId);
+         $statement->execute();
+         $id = $statement->fetch();
+         $statement->closeCursor();
+         $time=$id['time'];
+         return $time;
+        
+    }
+    
+    public static function setLastPost($threadId, $lastPost){
+        $db = Database::getDB();
+        
+        $query = 'UPDATE thread
+                  SET lastPost = :lastPost
+                  WHERE threadId = :threadId';
+        
+        $statement = $db->prepare($query);
+        
+        $statement->bindValue(':threadId', $threadId);
+        $statement->bindValue(':lastPost', $lastPost);
+        $statement->execute();
+        $statement->closeCursor();
+        
+    }
+    
     public static function get_thread_byId($id){
         
         $db = Database::getDB();
@@ -78,6 +113,41 @@ class thread_db{
          
          $thread= new thread($row['threadId'], $row['author'], $row['time'], $row['subject'], $row['body'], $row['numPosts']);
          return $thread;
+    }
+    
+    public static function setPostCount($threadId, $postCount){
+        
+        $db = Database::getDB();
+        
+        $query = 'UPDATE thread
+                  SET numPosts = :postCount
+                  WHERE threadId = :threadId
+                  ';
+        
+        $statement = $db->prepare($query);
+        $statement->bindValue(':threadId', $threadId);
+        $statement->bindValue(':postCount', $postCount);
+         $statement->execute();
+         
+         $statement->closeCursor();
+    }
+    
+    public static function getPostCount($threadId){
+        
+        $db = Database::getDB();
+        
+        $query = 'SELECT count(*)
+                  FROM post
+                  where threadId = :threadId';
+        
+        $statement = $db->prepare($query);
+        $statement->bindValue(':threadId', $threadId);
+         $statement->execute();
+         $count= $statement->fetch();
+         
+         $statement->closeCursor();
+        $count= $count['count(*)'];
+         return $count;
     }
     
     

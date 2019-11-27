@@ -3,30 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/dediSystems/css/css.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valLogin.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/thread_db.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valUpdateUser.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/index.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valRegister.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/account.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/model/user_db.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/css/bootstrap.css</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/accountInfo.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valResetPw.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/nav.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/user.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/register.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/css/custom.css</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/footer.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/forum.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/login.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/resetPw.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/css/bootstrap.min.css</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/thread.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/css/bootstrap.min.css.map</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valNewThread.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/home.php</file>
         </group>
     </open-files>
 </project-private>

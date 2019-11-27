@@ -33,8 +33,15 @@ if ($isValid === false) {
     exit();
 }else{
     thread_db::add_thread('', $_SESSION['user']->getUsername(), $subject, $body);
+    
     $threadId= thread_db::get_last_postbyId();
+    
     post_db::add_post('', $threadId, $_SESSION['user']->getUsername(), $body);
+    $postCount= thread_db::getPostCount($threadId);
+    thread_db::setPostCount($threadId, $postCount);
+    $lastPost=thread_db::getLastPost($threadId);
+    thread_db::setLastPost($threadId, $lastPost);
+    
     header("Location: index.php?action=forum");
     
 }
