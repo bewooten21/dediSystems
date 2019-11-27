@@ -228,6 +228,33 @@ switch ($action) {
         include('model/valAddProduct.php');
         die();
         break;
+    
+    case 'editProduct':
+        
+        $id=filter_input(INPUT_POST, 'id');
+        $product= product_db::getProduct_byId($id);
+        $nameError = "form-group";
+        $nameClass="";
+        $name="";
+        $pdClass="";
+        $pdError="form-group";
+        $pd="";
+        $priceError="form-group";
+        $priceClass="";
+        $price="";
+        $name_error="";
+        $pd_error="";
+        $price_error="";
+        $image_error="";
+        include('view/editProduct.php');
+        die();
+        break;
+    
+    case'valUpdateProduct':
+        include('model/valUpdateProduct.php');
+        die();
+        break;
+        
         
         
 }

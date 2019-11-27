@@ -71,4 +71,43 @@ class product_db {
         $statement->closeCursor();
         return $products;
     }
+    
+    public static function getProduct_byId($id){
+        $db = Database::getDB();
+        
+        $query = 'SELECT * from product
+                  WHERE prodId = :id ';
+        
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+        $row = $statement->fetch();
+        $product= new product($row['prodId'],$row['price'],$row['image'],$row['prodDesc'],$row['prodName']);
+        
+        $statement->closeCursor();
+        return $product;
+    }
+    
+    public static function updateProduct($prodId, $price, $image, $prodDesc, $prodName){
+        
+        $db = Database::getDB();
+        
+        $query = 'UPDATE product
+                  SET price = :price,
+                  image = :image,
+                  prodDesc = :prodDesc,
+                  prodName = :prodName
+                  WHERE prodId = :prodId';
+        
+        $statement = $db->prepare($query);
+        $statement->bindValue(':prodId', $prodId);
+        $statement->bindValue(':price', $price);
+        $statement->bindValue(':image', $image);
+        $statement->bindValue(':prodDesc', $prodDesc);
+        $statement->bindValue(':prodName', $prodName);
+
+        $statement->execute();
+        $statement->closeCursor();
+        
+    }
 }
