@@ -44,5 +44,33 @@ class post_db {
 
         return $posts;
     }
+    
+    public static function deletePost($id){
+        
+        $db = Database::getDB();
+
+        $query = 'DELETE from post
+                  WHERE postId = :id ';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+
+        $statement->execute();
+        $statement->closeCursor();
+        
+    }
+    
+    public static function deletePosts($id){
+        $db = Database::getDB();
+
+        $query = 'DELETE from post
+                  WHERE threadId = :id ';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+
+        $statement->execute();
+        $statement->closeCursor();
+    }
 
 }

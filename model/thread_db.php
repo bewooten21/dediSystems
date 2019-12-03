@@ -150,6 +150,20 @@ class thread_db{
          return $count;
     }
     
+    public static function deleteThread($id){
+        
+        $db = Database::getDB();
+
+        $query = 'DELETE from thread
+                  WHERE threadId = :id ';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+
+        $statement->execute();
+        $statement->closeCursor();
+        
+    }
     
     
 }

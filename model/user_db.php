@@ -122,6 +122,31 @@ class user_db {
             
         
     }
+     public static function adminUpdate_user($id, $fName, $lName, $un, $email, $roleId) {
+        
+        $db = Database::getDB();
+        $query = $query = 'UPDATE user
+              SET fName = :fName,
+                  lName = :lName,
+                  username = :un,
+                  email = :email,
+                  roleId= :roleId
+                  
+                 
+                WHERE userId = :id';
+        
+            $statement = $db->prepare($query);
+            $statement->bindValue(':fName', $fName);
+            $statement->bindValue(':lName', $lName);
+            $statement->bindValue(':un', $un);
+            $statement->bindValue(':email', $email);
+            $statement->bindValue(':id', $id);
+            $statement->bindValue(':roleId', $roleId);
+             $statement->execute();
+            $statement->closeCursor();
+            
+        
+    }
 
     public static function delete_by_ID($id) {
         $db = Database::getDB();

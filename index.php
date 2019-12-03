@@ -10,6 +10,7 @@ require_once('model/contact_db.php');
 
 
 session_start();
+
 $action = filter_input(INPUT_POST, 'action');
 if ($action === null) {
     $action = filter_input(INPUT_GET, 'action');
@@ -275,12 +276,13 @@ switch ($action) {
 
     case 'viewProducts':
         $products = product_db::getAllProducts();
-       
+
         include('view/allProducts.php');
         die();
         break;
 
     case 'viewUsers':
+        $message;
         $users = user_db::select_all();
         include('view/allUsers.php');
         die();
@@ -318,28 +320,61 @@ switch ($action) {
         include('model/valUserMessage.php');
         die();
         break;
-    
-    
+
+
     case 'viewUserComments':
-        $comments= contact_db::getAll();
+        $comments = contact_db::getAll();
         include('view/viewUserComments.php');
         die();
         break;
-    
+
     case 'addToCart':
+        $id = filter_input(INPUT_POST, 'id');
+        $qty = filter_input(INPUT_POST, 'quantity');
+        $product = product_db::getProduct_byId($id);
+        include('model/cart.php');
         die();
         break;
-    
+
     case'deleteMessage':
         $id = filter_input(INPUT_POST, 'id');
+
         contact_db::delete($id);
         header("Location: index.php?action=viewUserComments");
         die();
         break;
+
+    case 'viewCart':
+        $subtotal = 0;
+        foreach ($_SESSION['cart'] as $item) {
+            $subtotal += $item['total'];
+        }
+        $subtotal = number_format($subtotal, 2);
+        include('view/cart.php');
+        die();
+        break;
+
+    case'deleteThread':
+        $threadId = filter_input(INPUT_POST, 'threadId');
+        post_db::deletePosts($threadId);
+        thread_db::deleteThread($threadId);
         
+        header("Location: index.php?action=forum");
+         die();
+        break;
         
-      
-        
+    case 'deletePost':
+        $postId=filter_input(INPUT_POST, 'postId');
+        post_db::deletePost($postId);
+        $threadId = filter_input(INPUT_POST, 'threadId');
+        $postError = "Enter comment";
+        $thread = thread_db::get_thread_byId($threadId);
+        $posts = post_db::get_posts_by_threadId($threadId);
+        $postCount = thread_db::getPostCount($threadId);
+        $lastPost = thread_db::getLastPost($threadId);
+        thread_db::setLastPost($threadId, $lastPost);
+        thread_db::setPostCount($threadId, $postCount);
+        include ('view/viewThread.php');
 }
      
 

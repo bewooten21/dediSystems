@@ -28,6 +28,20 @@ and open the template in the editor.
     <tr>
         <td id='border'><?php echo $p->getBody() ; ?></td>
     </tr>
+    <tr>
+        <?php if (isset($_SESSION['user'])) { ?>
+                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                            <td>
+                                <form action="index.php" method="post">
+                                    <input type="hidden" name="action" value="deletePost">
+                                    <input type="hidden" name="postId"  value="<?php echo $p->getId(); ?>">
+                                    <input type="hidden" name="threadId"  value="<?php echo $thread->getId(); ?>">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                            <?php } ?>
+                            <?php } ?>
+    </tr>
     <?php endforeach; ?>
   
   </tbody>

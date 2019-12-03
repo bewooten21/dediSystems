@@ -11,33 +11,47 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
-        <div class="container" id="white">
+        <div class="container" >
             <table class="table table-bordered table-hover table-striped ">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Subject</th>
-      <th scope="col">Author</th>
-      <th scope="col">Posts</th>
-      <th scope="col">Last Post</th>
-      
-      
-    </tr>
-  </thead>
-  <tbody>
-      <?php foreach ($threads as $t) : ?>
-    <tr>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Posts</th>
+                        <th scope="col">Last Post</th>
 
-      <td><a href="index.php?action=viewThread&amp;id=<?php echo $t->getId(); ?>"><?php echo $t->getSubject(); ?></td>
-      <td><?php echo $t->getAuthor() ; ?></td>
-      <td><?php echo $t->getPosts() ; ?></td>
-      <td><?php echo $t->getTime() ; ?></td>
 
-    </tr>
-    <?php endforeach; ?>
-  
-  </tbody>
-</table>
-        <a href='index.php?action=newThread'>New Thread</a>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($threads as $t) : ?>
+                        <tr>
+
+                            <td><a href="index.php?action=viewThread&amp;id=<?php echo $t->getId(); ?>"><?php echo $t->getSubject(); ?></td>
+                            <td><?php echo $t->getAuthor(); ?></td>
+                            <td><?php echo $t->getPosts(); ?></td>
+                            <td><?php echo $t->getTime(); ?></td>
+                             <?php if (isset($_SESSION['user'])) { ?>
+                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                            <td>
+                                <form action="index.php" method="post">
+                                    <input type="hidden" name="action" value="deleteThread">
+                                    <input type="hidden" name="threadId"  value="<?php echo $t->getId(); ?>">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                            <?php } ?>
+                            <?php } ?>
+                            
+
+                        </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
+            </table>
+            <?php if (isset($_SESSION['user'])) { ?>
+            <a href='index.php?action=newThread'>New Thread</a>
+            <?php } ?>
         </div>
         <?php include('footer.php'); ?>
     </body>

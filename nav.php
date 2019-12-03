@@ -77,6 +77,8 @@
                     <?php } ?></li>
                 <?php if (!isset($_SESSION['user'])) { ?>
                     <li><a href='index.php?action=login'>Login</a><?php } ?></li>
+                    <li><a href="index.php?action=viewCart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    
 
             </ul>
         </div>
