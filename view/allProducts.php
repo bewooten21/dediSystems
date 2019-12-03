@@ -55,9 +55,13 @@ and open the template in the editor.
                     </tbody>
                 </table>
 
-
+<?php if (isset($_SESSION['user'])) { ?>
+                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                            <a href="index.php?action=addProduct">Add Product</a>
+                            <?php } ?>
+                            <?php } ?>
             </div>
-            <a href="index.php?action=addProduct">Add Product</a>
+            
         </div>
 
         <?php include('./footer.php'); ?>

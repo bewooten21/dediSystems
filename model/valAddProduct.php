@@ -91,7 +91,7 @@ if ($isValid === false) {
 } else if ($isValid === true) {
     product_db::addProduct('', $price, $imageName, $pd, $name,$q);
     $lastProd = product_db::getLastProduct_byId();
-    
+  
     $newName = $lastProd. '.'.$file_ext;
     move_uploaded_file($file_tmp, "images/" . $newName);
     $image ='images/'. $newName;

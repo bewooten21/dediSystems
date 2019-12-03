@@ -12,11 +12,24 @@
     
     
 }
+#shop{
+    background-color: white;
+    color:black;
+    
+    
+}
+#fontSize{
+    font-size: 15px;
+}
 
 select {
   color: black;
 }
 
+img.resize {
+  width:100px;
+  height:100px;
+}
 #border{
     
     border-bottom: 1px solid black;

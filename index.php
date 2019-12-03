@@ -213,6 +213,9 @@ switch ($action) {
         break;
 
     case 'shop':
+        $numOfCols  =4;
+        $rowCount = 0;
+        $bootstrapColWidth = 12 / $numOfCols;
         $products = product_db::getAllProducts();
         include('view/shop.php');
         die();
@@ -358,13 +361,13 @@ switch ($action) {
         $threadId = filter_input(INPUT_POST, 'threadId');
         post_db::deletePosts($threadId);
         thread_db::deleteThread($threadId);
-        
+
         header("Location: index.php?action=forum");
-         die();
+        die();
         break;
-        
+
     case 'deletePost':
-        $postId=filter_input(INPUT_POST, 'postId');
+        $postId = filter_input(INPUT_POST, 'postId');
         post_db::deletePost($postId);
         $threadId = filter_input(INPUT_POST, 'threadId');
         $postError = "Enter comment";
