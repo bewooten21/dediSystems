@@ -25,15 +25,15 @@ switch ($action) {
         break;
 
     case 'contact':
-        $success="";
-        $mClass="";
-        $mError="form-group";
-        $m_error="";
-        $message="";
-        $emailClass="";
-        $emailError="form-group";
-        $email_error="";
-        $email="";
+        $success = "";
+        $mClass = "";
+        $mError = "form-group";
+        $m_error = "";
+        $message = "";
+        $emailClass = "";
+        $emailError = "form-group";
+        $email_error = "";
+        $email = "";
         include('view/contact.php');
         die();
         break;
@@ -100,7 +100,7 @@ switch ($action) {
         header("Location: home.php");
 
     case 'forum':
-        
+
         $threads = thread_db::get_threads();
         include('view/forum.php');
         die();
@@ -196,13 +196,13 @@ switch ($action) {
             $thread = thread_db::get_thread_byId($threadId);
             $posts = post_db::get_posts_by_threadId($thread->getId());
             include ('view/viewThread.php');
-        }else if($body !="" ){
+        } else if ($body != "") {
             post_db::add_post('', $threadId, $_SESSION['user']->getUsername(), $body);
-            $postCount= thread_db::getPostCount($threadId);
+            $postCount = thread_db::getPostCount($threadId);
             $postError = "Enter comment";
             $thread = thread_db::get_thread_byId($threadId);
             $posts = post_db::get_posts_by_threadId($threadId);
-            $lastPost=thread_db::getLastPost($threadId);
+            $lastPost = thread_db::getLastPost($threadId);
             thread_db::setLastPost($threadId, $lastPost);
             thread_db::setPostCount($threadId, $postCount);
             include ('view/viewThread.php');
@@ -210,81 +210,82 @@ switch ($action) {
 
         die();
         break;
-        
+
     case 'shop':
-        $products= product_db::getAllProducts();
+        $products = product_db::getAllProducts();
         include('view/shop.php');
         die();
         break;
-    
+
     case 'addProduct':
-        $q="";
-        $qClass="";
-        $qError="form-group";
-        $q_error="";
+        $q = "";
+        $qClass = "";
+        $qError = "form-group";
+        $q_error = "";
         $nameClass = "";
         $nameError = "form-group";
-        $name="";
-        $pdClass="";
-        $pdError="form-group";
-        $pd="";
-        $priceError="form-group";
-        $priceClass="";
-        $price="";
-        $name_error="";
-        $pd_error="";
-        $price_error="";
-        $image_error="";
+        $name = "";
+        $pdClass = "";
+        $pdError = "form-group";
+        $pd = "";
+        $priceError = "form-group";
+        $priceClass = "";
+        $price = "";
+        $name_error = "";
+        $pd_error = "";
+        $price_error = "";
+        $image_error = "";
         include('view/addProduct.php');
         die();
         break;
-    
+
     case 'valAddProduct':
         include('model/valAddProduct.php');
         die();
         break;
-    
+
     case 'editProduct':
-        
-        $id=filter_input(INPUT_POST, 'id');
-        $product= product_db::getProduct_byId($id);
+
+        $id = filter_input(INPUT_POST, 'id');
+        $product = product_db::getProduct_byId($id);
         $nameError = "form-group";
-        $nameClass="";
-        $name="";
-        $pdClass="";
-        $pdError="form-group";
-        $pd="";
-        $priceError="form-group";
-        $priceClass="";
-        $price="";
-        $name_error="";
-        $pd_error="";
-        $price_error="";
-        $image_error="";
-        $qClass="";
-        $qError="form-group";
-        $q_error="";
+        $nameClass = "";
+        $name = "";
+        $pdClass = "";
+        $pdError = "form-group";
+        $pd = "";
+        $priceError = "form-group";
+        $priceClass = "";
+        $price = "";
+        $name_error = "";
+        $pd_error = "";
+        $price_error = "";
+        $image_error = "";
+        $qClass = "";
+        $qError = "form-group";
+        $q_error = "";
         include('view/editProduct.php');
         die();
         break;
-    
+
     case'valUpdateProduct':
         include('model/valUpdateProduct.php');
         die();
         break;
-    
+
     case 'viewProducts':
-        $products= product_db::getAllProducts();
+        $products = product_db::getAllProducts();
+       
         include('view/allProducts.php');
         die();
         break;
-    
+
     case 'viewUsers':
-        $users= user_db::select_all();
+        $users = user_db::select_all();
         include('view/allUsers.php');
         die();
         break;
-    
+
     case 'editUser':
         $emailClass = "";
         $emailError = "form-group";
@@ -300,26 +301,44 @@ switch ($action) {
         $un_error = '';
         $fn_error = '';
         $ln_error = '';
-        $role_error='';
-        $roles= role_db::getAll();
-        $id=filter_input(INPUT_POST, 'id');
-        $user= user_db::get_user_by_id($id);
+        $role_error = '';
+        $roles = role_db::getAll();
+        $id = filter_input(INPUT_POST, 'id');
+        $user = user_db::get_user_by_id($id);
         include('view/editUser.php');
         die();
         break;
-    
+
     case'valAdminUpdateUser':
         include('model/valAdminUpdateUser.php');
         die();
         break;
-        
+
     case 'valUserMessage':
         include('model/valUserMessage.php');
-         die();
+        die();
+        break;
+    
+    
+    case 'viewUserComments':
+        $comments= contact_db::getAll();
+        include('view/viewUserComments.php');
+        die();
+        break;
+    
+    case 'addToCart':
+        die();
+        break;
+    
+    case'deleteMessage':
+        $id = filter_input(INPUT_POST, 'id');
+        contact_db::delete($id);
+        header("Location: index.php?action=viewUserComments");
+        die();
         break;
         
         
-        
+      
         
 }
      

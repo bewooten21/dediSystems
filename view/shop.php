@@ -35,8 +35,24 @@ and open the template in the editor.
       <td><?php echo $p->getName(); ?></td>
       <td><?php echo $p->getPrice() ; ?></td>
       <td><?php echo $p->getDesc() ; ?></td>
-      <td><?php echo $p->getQuantity() ; ?></td>
+      <td><select name="quantity">
+                            
+                            <?php
+                            for ($i = 1; $i <= $p->getQuantity(); $i++) {
+                                ?>
+                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select></td>
       <td><img height="100" width="100" src='<?php echo $p->getImage() ; ?>'> </td>
+      <td><form action="index.php" method="post">
+                                        <input type="hidden" name="action" value="addToCart">
+                                        <input type="hidden" name="id"  value="<?php echo $p->getId(); ?>">
+
+
+                                        <input type="submit" value="Add To Cart">
+                                    </form></td>
       
     </tr>
     <?php endforeach; ?>
