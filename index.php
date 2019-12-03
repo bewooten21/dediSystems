@@ -6,6 +6,7 @@ require_once('model/thread_db.php');
 require_once('model/post_db.php');
 require_once('model/product_db.php');
 require_once('model/role_db.php');
+require_once('model/contact_db.php');
 
 
 session_start();
@@ -24,6 +25,7 @@ switch ($action) {
         break;
 
     case 'contact':
+        $success="";
         $mClass="";
         $mError="form-group";
         $m_error="";
@@ -311,6 +313,10 @@ switch ($action) {
         die();
         break;
         
+    case 'valUserMessage':
+        include('model/valUserMessage.php');
+         die();
+        break;
         
         
         

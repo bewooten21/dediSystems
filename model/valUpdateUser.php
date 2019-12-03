@@ -116,5 +116,6 @@ if ($isValid === false) {
     user_db::update_user($_SESSION['user']->getId(), $fn, $ln, $un, $email);
     $user=user_db::get_user_by_id($_SESSION['user']->getId());
     $_SESSION['user']=$user;
+    $message="Account info updated!";
    include('view/account.php');
 }
