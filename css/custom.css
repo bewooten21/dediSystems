@@ -22,6 +22,7 @@
     font-size: 15px;
 }
 
+
 select {
   color: black;
 }
@@ -62,15 +63,15 @@ img.resize {
     text-align: center;
 }
 
-/*==================== 
+/*
 	Footer 
-====================== */
+ */
 
 /* Main Footer */
 footer .main-footer{	padding: 20px 0;	background: #252525;}
 footer ul{	padding-left: 0;	list-style: none;}
 
-/* Copy Right Footer */
+
 .footer-copyright {	background: #222;	padding: 5px 0;}
 .footer-copyright .logo {    display: inherit;}
 .footer-copyright nav {    float: right;    margin-top: 5px;}
@@ -95,9 +96,7 @@ footer.light .footer-copyright{	background: none repeat scroll 0 0 rgba(255, 255
 /* Footer 4 */
 .footer- .logo {    display: inline-block;}
 
-/*==================== 
-	Widgets 
-====================== */
+
 .widget{	padding: 20px;	margin-bottom: 40px;}
 .widget.widget-last{	margin-bottom: 0px;}
 .widget.no-box{	padding: 0;	background-color: transparent;	margin-bottom: 40px;

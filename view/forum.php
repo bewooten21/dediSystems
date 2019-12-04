@@ -11,7 +11,9 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
+        
         <div class="container" >
+            
             <table class="table table-bordered table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
@@ -53,6 +55,7 @@ and open the template in the editor.
             <a href='index.php?action=newThread'>New Thread</a>
             <?php } ?>
         </div>
+       
         <?php include('footer.php'); ?>
     </body>
 </html>

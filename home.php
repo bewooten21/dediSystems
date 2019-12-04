@@ -46,11 +46,12 @@
     </div>
   </div>
 </div>
-    <div class="container">
-  <h2></h2>
+ <div class="footer">
+  
            
  
-</div>
+
 <?php include('footer.php'); ?>
+  </div>
 </body>
 </html>
