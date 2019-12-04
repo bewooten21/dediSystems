@@ -11,7 +11,7 @@
   <div class="container" id="account">
       <div class="sidebarUsers"> 
           <ul style="list-style: none;">
-              <li><a href='index.php?action=viewOrders'>Orders</a></li>
+              <li><a href='index.php?action=resetPw'>Change Password</a></li>
               <li><a href='index.php?action=accountInfo'>Account Info</a></li>
               <li>ssssssssssss</li>
           </ul>
@@ -23,8 +23,8 @@
     </p>
     <br />
     <p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Download Free Trial »</a>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a>
+      <a class="btn btn-primary btn-lg" href="index.php?action=accountInfo" role="button">Account Info</a>
+      <a class="btn btn-primary btn-lg" href="index.php?action=viewOrders" role="button">Orders</a>
     </p>
   </div>
 </div>
