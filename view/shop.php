@@ -24,8 +24,8 @@ and open the template in the editor.
                             <input type="hidden" name="id"  value="<?php echo $p->getId(); ?>">
                         <div class="col-md-<?php echo $bootstrapColWidth; ?>">
                             <div class="thumbnail" id="shop">
-                                <img class="resize" src='<?php echo $p->getImage(); ?>' >
-                                <p id="fontSize"><?php echo $p->getName(); ?></p>
+                                 <img class="resize"  src='<?php echo $p->getImage(); ?>' >
+                                 <p id="fontSize"><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"><?php echo $p->getName(); ?></a></p>
                                 <p id="fontSize"><?php echo $p->getPrice(); ?></p>
                                 <p id="fontSize"><?php echo $p->getDesc(); ?></p>
                                 <p id="fontSize"> <select name="quantity">

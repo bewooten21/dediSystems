@@ -213,7 +213,7 @@ switch ($action) {
         break;
 
     case 'shop':
-        $numOfCols  =4;
+        $numOfCols = 4;
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
         $products = product_db::getAllProducts();
@@ -378,6 +378,12 @@ switch ($action) {
         thread_db::setLastPost($threadId, $lastPost);
         thread_db::setPostCount($threadId, $postCount);
         include ('view/viewThread.php');
+
+    case'viewProduct':
+        $productId = filter_input(INPUT_GET, 'id');
+        include('view/viewProduct.php');
+        die();
+        break;
 }
      
 

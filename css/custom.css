@@ -15,7 +15,7 @@
 #shop{
     background-color: white;
     color:black;
-    
+    border-radius: 10px;
     
 }
 #fontSize{
@@ -26,9 +26,12 @@ select {
   color: black;
 }
 
+
 img.resize {
-  width:100px;
+  width:120px;
   height:100px;
+ border-radius: 25px;
+
 }
 #border{
     
