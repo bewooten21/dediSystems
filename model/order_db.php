@@ -101,6 +101,31 @@ class order_db {
             display_db_error($error_message);
         }
     }
+    
+    public static function getAllOrders(){
+        $db = Database::getDB();
+        
+        $query= 'SELECT * from orderdetails JOIN
+                  orders ON orderdetails.orderId = orders.orderId JOIN
+                  user ON orders.userId = user.userId
+                  GROUP BY orders.userId
+                  
+                 ';
+        
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':userId', $userId);
+            $statement->execute();
+            $orders = $statement->fetchAll();
+            $statement->closeCursor();
+
+          
+            return $orders;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
         
     
     

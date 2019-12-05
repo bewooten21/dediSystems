@@ -410,6 +410,14 @@ switch ($action) {
         include('view/userOrders.php');
         die();
         break;
+    
+    case'adminViewOrders':
+        $orders=
+        include('view/adminViewOrders.php');
+         die();
+        break;
+        
+        
 }
      
 

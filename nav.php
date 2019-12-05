@@ -54,6 +54,7 @@
                                 <li><a href="index.php?action=viewProducts">View Products</a></li>
                                 <li><a href="index.php?action=viewUsers">View Users</a></li>
                                 <li><a href="index.php?action=viewUserComments">View Messages</a></li>
+                                <li><a href="index.php?action=adminViewOrders">View Orders</a></li>
                             </ul>
                         <?php } ?></li>
                 <?php } ?>
