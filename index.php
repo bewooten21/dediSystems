@@ -406,7 +406,7 @@ switch ($action) {
         break;
         
     case 'viewOrders':
-         $orders= order_db::getUserOrders($_SESSION['user']->getId());
+        $orders= order_db::getUserOrders($_SESSION['user']->getId());
         include('view/userOrders.php');
         die();
         break;
