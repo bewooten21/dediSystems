@@ -13,7 +13,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
-        <br>
+        <h2>Your Cart</h2>
         <div class="container" id="shop">
             
             <?php foreach ($_SESSION['cart'] as $c) : ?>

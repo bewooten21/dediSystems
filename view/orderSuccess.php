@@ -10,7 +10,7 @@
     
     <div class="jumbotron" id="white">
   <div class="container" id="account">
-      <div class="sidebarUsers"> 
+      
  <h2>Order # <?php echo $orderId ;?> Has Been Placed. Thank you <?php echo $_SESSION['user']->getFName() . " ". $_SESSION['user']->getLName() ; ?></h2>
        
         <table>
@@ -24,7 +24,7 @@
                         
                           
         </table>
-  </div>
+ 
 </div>
         
     <?php include('footer.php'); ?>
