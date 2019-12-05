@@ -381,12 +381,14 @@ switch ($action) {
 
     case'viewProduct':
         $productId = filter_input(INPUT_GET, 'id');
+        $product= product_db::getProduct_byId($productId);
         include('view/viewProduct.php');
         die();
         break;
     
     case'submitOrder':
-        $subtotal = 0;
+        if(isset($_SESSION['user'])){
+            $subtotal = 0;
         foreach ($_SESSION['cart'] as $item) {
             $subtotal += $item['total'];
         }
@@ -402,6 +404,10 @@ switch ($action) {
         $order= order_db::getOrderById($orderId);
        
         include('view/orderSuccess.php');
+        }else{
+            header("Location: index.php?action=login");
+        }
+        
         die();
         break;
         

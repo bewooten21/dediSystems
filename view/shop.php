@@ -19,49 +19,49 @@ and open the template in the editor.
                     <?php
                     foreach ($products as $p) {
                         ?>  
-                    <form action="index.php" method="post">
+                        <form action="index.php" method="post">
                             <input type="hidden" name="action" value="addToCart">
                             <input type="hidden" name="id"  value="<?php echo $p->getId(); ?>">
-                        <div class="col-md-<?php echo $bootstrapColWidth; ?>">
-                            
-                            <div class="thumbnail" id="shop">
-                                 <img class="resize"  src='<?php echo $p->getImage(); ?>' >
-                                 <ul style="list-style-type:none;">
-                                     
-                                     <li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"> <p><?php echo $p->getName(); ?></p></a></li>
-                                     <li><p id="fontSize"><?php echo $p->getPrice(); ?></p></li>
-                                     <li><p id="fontSize"><?php echo $p->getDesc(); ?></p></li>
-                                 </ul>
-                                <p id="fontSize"> <select name="quantity">
-                                        <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$p->getId()])) { ?>
-        <?php for ($i = 1; $i <= (((int) $p->getQuantity()) - ((int) $_SESSION['cart'][(int) $p->getId()]['qty'])); $i++) { ?>
-                                                <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                            <div class="col-md-<?php echo $bootstrapColWidth; ?>">
 
+                                <div class="thumbnail" id="shop">
+                                    <img class="resize"  src='<?php echo $p->getImage(); ?>' >
+                                    <ul style="list-style-type:none;">
+
+                                        <li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"> <p><?php echo $p->getName(); ?></p></a></li>
+                                        <li><p id="fontSize">$<?php echo $p->getPrice(); ?></p></li>
+                                        <li><p id="fontSize"><?php echo $p->getDesc(); ?></p></li>
+                                    </ul>
+                                    <p id="fontSize"> <select name="quantity">
+                                            <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$p->getId()])) { ?>
+                                                <?php for ($i = 1; $i <= (((int) $p->getQuantity()) - ((int) $_SESSION['cart'][(int) $p->getId()]['qty'])); $i++) { ?>
+                                                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+
+                                                <?php } ?>
                                             <?php } ?>
-    <?php } ?>
 
 
-                                        <?php if (empty($_SESSION['cart']) || isset($_SESSION['cart'][$p->getId()]) === false) { ?>
-        <?php for ($i = 1; $i <= $p->getQuantity(); $i++) { ?>
+                                            <?php if (empty($_SESSION['cart']) || isset($_SESSION['cart'][$p->getId()]) === false) { ?>
+                                                <?php for ($i = 1; $i <= $p->getQuantity(); $i++) { ?>
 
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-    <?php } ?>
-                                    </select></p>
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            <?php } ?>
+                                        </select></p>
                                     <input type="submit" class="btn btn-primary btn-sml" value="Add To Cart">
-                                
-                        </form>
+
+                                    </form>
+                                </div>
+
                             </div>
-                            
-                        </div>
-                        <?php
-                        $rowCount++;
-                        if ($rowCount % $numOfCols == 0)
-                            echo '</div><div class="row">';
-                    }
-                    ?>
+                            <?php
+                            $rowCount++;
+                            if ($rowCount % $numOfCols == 0)
+                                echo '</div><div class="row">';
+                        }
+                        ?>
                 </div>
 
 
@@ -70,7 +70,7 @@ and open the template in the editor.
 
         </div>
 
-<?php include('./footer.php'); ?>
+        <?php include('./footer.php'); ?>
 
     </body>
 </html>

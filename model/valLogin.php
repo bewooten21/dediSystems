@@ -48,4 +48,8 @@ if ($isValid === false) {
         $_SESSION['user'] = $user;
         header("Location: index.php?action=viewAccount");
     }
+    
+    if(isset($_SESSION['cart'])){
+        header("Location: index.php?action=viewCart");
+    }
 }
