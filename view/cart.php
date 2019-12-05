@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -6,12 +8,15 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title></title>
+        <title>DeDiSystems</title>
+        <?php include('css\css.php'); ?> 
     </head>
     <body>
-        
-        <?php foreach ($_SESSION['cart'] as $c) : ?>
+        <?php include ('nav.php'); ?> 
+        <br>
+        <div class="container" id="shop">
+            
+            <?php foreach ($_SESSION['cart'] as $c) : ?>
         <table>
                             <tr>
 
@@ -20,6 +25,18 @@ and open the template in the editor.
                                 <td><?php echo $c['qty']; ?></td>
                                 <td><?php echo $c['price']; ?></td>
                                 <td><?php echo $c['total']; ?></td>
+                                <td>
+                                <form action="index.php" method="post">
+                                        <input type="hidden" name="action" value="submitOrder">
+                                        <input type="submit" value="Update">
+                                    </form>
+                                </td>
+                                <td>
+                                <form action="index.php" method="post">
+                                        <input type="hidden" name="action" value="submitOrder">
+                                        <input type="submit" value="Delete">
+                                    </form>
+                                </td>
 
                                
                             </tr>
@@ -34,5 +51,9 @@ and open the template in the editor.
                             </tr>
         </table>
         <h3><?php echo $subtotal ?></h3>
+            
+        </div>
+       
+        <?php include('footer.php'); ?>
     </body>
 </html>
