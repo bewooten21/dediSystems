@@ -20,14 +20,18 @@ and open the template in the editor.
                                 <td><?php echo $c['qty']; ?></td>
                                 <td><?php echo $c['price']; ?></td>
                                 <td><?php echo $c['total']; ?></td>
-                                
-                                
-                                
-                                
-                                
+
                                
                             </tr>
                         <?php endforeach; ?>
+                            <tr>
+                                <td>
+                                <form action="index.php" method="post">
+                                        <input type="hidden" name="action" value="submitOrder">
+                                        <input type="submit" value="Place Order">
+                                    </form>
+                                </td>
+                            </tr>
         </table>
         <h3><?php echo $subtotal ?></h3>
     </body>

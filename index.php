@@ -7,7 +7,7 @@ require_once('model/post_db.php');
 require_once('model/product_db.php');
 require_once('model/role_db.php');
 require_once('model/contact_db.php');
-
+require_once('model/order_db.php');
 
 session_start();
 
@@ -382,6 +382,32 @@ switch ($action) {
     case'viewProduct':
         $productId = filter_input(INPUT_GET, 'id');
         include('view/viewProduct.php');
+        die();
+        break;
+    
+    case'submitOrder':
+        $subtotal = 0;
+        foreach ($_SESSION['cart'] as $item) {
+            $subtotal += $item['total'];
+        }
+        $subtotal = number_format($subtotal, 2);
+        $orderId= order_db::addOrder('', $_SESSION['user']->getId() , $subtotal);
+        foreach ($_SESSION['cart'] as $item) {
+            order_db::addOrderDetails('', $orderId, $item['id'], $item['qty']);
+            
+        }
+        if($orderId != false){
+            unset($_SESSION['cart']);
+        }
+        $order= order_db::getOrderById($orderId);
+       
+        include('view/orderSuccess.php');
+        die();
+        break;
+        
+    case 'viewOrders':
+         $orders= order_db::getUserOrders($_SESSION['user']->getId());
+        include('view/userOrders.php');
         die();
         break;
 }
