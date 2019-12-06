@@ -45,7 +45,7 @@ and open the template in the editor.
                                         <input type="hidden" name="id"  value="<?php echo $c['feedbackId']; ?>">
 
 
-                                        <input type="submit" value="Delete">
+                                        <input type="submit" class="btn btn-primary btn-sml" value="Delete">
                                     </form>
                                 </td>
                             </tr>

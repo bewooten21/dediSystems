@@ -160,8 +160,8 @@ class order_db {
     public static function updateOrderStatus($orderId, $status){
         $db = Database::getDB();
         $query = $query = 'UPDATE orders
-              SET status = :status,
-                   date = ""
+              SET status = :status
+                   
                 WHERE orderId = :orderId';
         
             $statement = $db->prepare($query);

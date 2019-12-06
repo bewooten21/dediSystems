@@ -523,7 +523,7 @@ switch ($action) {
     case 'cancelOrderAdmin':
         $orderId = filter_input(INPUT_POST, 'orderId');
         order_db::cancelOrder($orderId, 'CANCELLED');
-        header("Location: index.php?action=viewOrders");
+        header("Location: index.php?action=adminViewOrders");
         die();
         break;
 }

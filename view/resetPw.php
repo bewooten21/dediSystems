@@ -13,7 +13,7 @@
           <ul style="list-style: none;">
               <li><a href='index.php?action=viewOrders'>Orders</a></li>
               <li><a href='index.php?action=accountInfo'>Account Info</a></li>
-              <li>ssssssssssss</li>
+
           </ul>
       </div>
       <h1>Reset Password</h1>

@@ -48,7 +48,7 @@ and open the template in the editor.
                                         <input type="hidden" name="id"  value="<?php echo $p->getId(); ?>">
 
 
-                                        <input type="submit" value="Edit">
+                                        <input type="submit" class="btn btn-primary btn-sml" value="Edit">
                                     </form>
                                 </td>
                             </tr>

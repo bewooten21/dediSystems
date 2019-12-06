@@ -9,7 +9,7 @@
     
     <div class="container">
         <div class="center">
-            <h2>All Products</h2>
+            <h2>Account Info</h2>
             </div>
   <div class="jumbotron" id="white">
       <div class="sidebarUsers"> 

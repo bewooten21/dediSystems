@@ -67,7 +67,7 @@ and open the template in the editor.
                             <?php  if($o['status']!='CANCELLED') {?>
                             <td>
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="cancelOrder">
+                                    <input type="hidden" name="action" value="cancelOrderAdmin">
                                     <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
                                     <input type="submit" class="btn btn-primary" value="Cancel">
                                 </form>

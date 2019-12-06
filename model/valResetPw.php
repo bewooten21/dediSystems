@@ -12,7 +12,22 @@ if ($pw === "") {
     $pwClass = "glyphicon glyphicon-remove form-control-feedback";
     $pwError = "form-group has-error has-feedback";
     $isValid = FALSE;
-} else {
+} else if(preg_match('/^.{8,20}$/',$pw)===0){
+    $pw_error ="Must be 8-20 characters";
+    $pwClass = "glyphicon glyphicon-remove form-control-feedback";
+    $pwError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+} else if(preg_match('(.*[A-Z].*)',$pw)===0){
+    $pw_error='Must contain at least one capital letter';
+    $pwClass = "glyphicon glyphicon-remove form-control-feedback";
+    $pwError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+} else if(preg_match('(.*[a-z].*)',$pw)===0){
+    $pw_error='Must contain at least one lower case letter';
+    $pwClass = "glyphicon glyphicon-remove form-control-feedback";
+    $pwError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+}else {
     $pwClass = "glyphicon glyphicon-ok form-control-feedback";
     $pwError = "form-group has-success has-feedback";
 }
