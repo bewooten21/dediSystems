@@ -30,8 +30,27 @@ and open the template in the editor.
                                      <li><p id="fontSize">$<?php echo $product->getPrice(); ?></p></li>
                                      <li><p id="fontSize"><?php echo $product->getDesc(); ?></p></li>
                                  </ul>
-                               
-                                <a href='index.php?action=shop'>Back To Shop</a>
+                                 <p id="fontSize"> <select name="quantity">
+                                            <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$product->getId()])) { ?>
+                                                <?php for ($i = 1; $i <= (((int) $product->getQuantity()) - ((int) $_SESSION['cart'][(int) $product->getId()]['qty'])); $i++) { ?>
+                                                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+
+                                                <?php } ?>
+                                            <?php } ?>
+
+
+                                            <?php if (empty($_SESSION['cart']) || isset($_SESSION['cart'][$product->getId()]) === false) { ?>
+                                                <?php for ($i = 1; $i <= $product->getQuantity(); $i++) { ?>
+
+                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            <?php } ?>
+                                        </select></p>
+                                    <input type="submit" class="btn btn-primary btn-sml" value="Add To Cart">
+                                    </form><br>
+                                    <br><a class="btn btn-primary btn-sml" href="index.php?action=shop" role="button">Back To Shop</a>
                             </div>
                             
                         
