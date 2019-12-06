@@ -192,27 +192,27 @@ switch ($action) {
 
         $body = filter_input(INPUT_POST, 'body');
         $threadId = filter_input(INPUT_POST, 'threadId');
-       if(isset($_SESSION['user'])){
-           if ($body === "") {
-            $postError = "Body Required";
-            $thread = thread_db::get_thread_byId($threadId);
-            $posts = post_db::get_posts_by_threadId($thread->getId());
-            include ('view/viewThread.php');
-        } else if ($body != "") {
-            post_db::add_post('', $threadId, $_SESSION['user']->getUsername(), $body);
-            $postCount = thread_db::getPostCount($threadId);
-            $postError = "Enter comment";
-            $thread = thread_db::get_thread_byId($threadId);
-            $posts = post_db::get_posts_by_threadId($threadId);
-            $lastPost = thread_db::getLastPost($threadId);
-            thread_db::setLastPost($threadId, $lastPost);
-            thread_db::setPostCount($threadId, $postCount);
-            include ('view/viewThread.php');
-        }
-       }else{
+        if (isset($_SESSION['user'])) {
+            if ($body === "") {
+                $postError = "Body Required";
+                $thread = thread_db::get_thread_byId($threadId);
+                $posts = post_db::get_posts_by_threadId($thread->getId());
+                include ('view/viewThread.php');
+            } else if ($body != "") {
+                post_db::add_post('', $threadId, $_SESSION['user']->getUsername(), $body);
+                $postCount = thread_db::getPostCount($threadId);
+                $postError = "Enter comment";
+                $thread = thread_db::get_thread_byId($threadId);
+                $posts = post_db::get_posts_by_threadId($threadId);
+                $lastPost = thread_db::getLastPost($threadId);
+                thread_db::setLastPost($threadId, $lastPost);
+                thread_db::setPostCount($threadId, $postCount);
+                include ('view/viewThread.php');
+            }
+        } else {
             header("Location: index.php?action=login");
         }
-        
+
 
         die();
         break;
@@ -353,7 +353,8 @@ switch ($action) {
         break;
 
     case 'viewCart':
-
+        $date = date("Y-m-d");
+        $dateMessage = "";
         $subtotal = 0;
         if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $item) {
@@ -396,13 +397,42 @@ switch ($action) {
         break;
 
     case'submitOrder':
-        if (isset($_SESSION['user'])) {
+
+        $rentalDate = filter_input(INPUT_POST, 'rentalDate');
+        $rentalDate = date("m-d-Y", strtotime($rentalDate));
+        $checkDate = order_db::checkDate($rentalDate);
+       if($rentalDate==='01-01-1970'){
+           $dateMessage = "Enter valid date";
+            $date = date("Y-m-d");
+            $subtotal = 0;
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $item) {
+                    $subtotal += $item['total'];
+                }
+                $subtotal = number_format($subtotal, 2);
+            }
+
+            include('view/cart.php');
+       }
+        if ($checkDate === false) {
+            $dateMessage = "Date already booked";
+            $date = date("Y-m-d");
+            $subtotal = 0;
+            if (isset($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $item) {
+                    $subtotal += $item['total'];
+                }
+                $subtotal = number_format($subtotal, 2);
+            }
+
+            include('view/cart.php');
+        } else if (isset($_SESSION['user'])) {
             $subtotal = 0;
             foreach ($_SESSION['cart'] as $item) {
                 $subtotal += $item['total'];
             }
             $subtotal = number_format($subtotal, 2);
-            $orderId = order_db::addOrder('', $_SESSION['user']->getId(), $subtotal, 'Processing');
+            $orderId = order_db::addOrder('', $_SESSION['user']->getId(), $subtotal, 'Processing', $rentalDate);
             foreach ($_SESSION['cart'] as $item) {
                 order_db::addOrderDetails('', $orderId, $item['id'], $item['qty']);
             }
@@ -416,15 +446,18 @@ switch ($action) {
             header("Location: index.php?action=login");
         }
 
+
+
+
         die();
         break;
 
     case 'viewOrders':
         $orders = order_db::getUserOrders($_SESSION['user']->getId());
-        if($orders===false){
-            $message="You do not currently have any orders";
-        }else{
-            $message="";
+        if ($orders === false) {
+            $message = "You do not currently have any orders";
+        } else {
+            $message = "";
         }
         include('view/userOrders.php');
         die();
@@ -468,35 +501,31 @@ switch ($action) {
         header("Location: index.php?action=adminViewOrders");
         die();
         break;
-        
+
     case'fullfillOrder':
         $orderId = filter_input(INPUT_POST, 'orderId');
         order_db::updateOrderStatus($orderId, 'Ready for Pickup');
         header("Location: index.php?action=adminViewOrders");
         die();
         break;
-    
-  
-    
 
-    
+
+
+
+
     case'cancelOrder':
         $orderId = filter_input(INPUT_POST, 'orderId');
         order_db::cancelOrder($orderId, 'CANCELLED');
         header("Location: index.php?action=viewOrders");
         die();
         break;
-    
+
     case 'cancelOrderAdmin':
         $orderId = filter_input(INPUT_POST, 'orderId');
         order_db::cancelOrder($orderId, 'CANCELLED');
         header("Location: index.php?action=viewOrders");
         die();
         break;
-        
-        
-        
-        
 }
 
      

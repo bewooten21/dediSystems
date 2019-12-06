@@ -24,6 +24,7 @@ and open the template in the editor.
                         <th scope="col">OrderId</th>
                         <th scope="col">Total</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Rental Date</th>
                         <th scope="col"></th>
                         
                         
@@ -40,6 +41,7 @@ and open the template in the editor.
                             <td><?php echo $o['orderId'] ?> <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>"><div class="details"><?php echo"(Details)"; ?></div></a></td>
                             <td><?php echo $o['total'] ?></td>
                             <td><?php echo $o['status'] ?></td>
+                            <td><?php echo $o['date'] ?></td>
                             
                             
                             

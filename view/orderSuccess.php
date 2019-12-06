@@ -13,11 +13,7 @@
       
  <h2>Order # <?php echo $orderId ;?> Has Been Placed. Thank you <?php echo $_SESSION['user']->getFName() . " ". $_SESSION['user']->getLName() ; ?></h2>
        
-        <table>
-                            <tr>
-                                <td><?php echo $order['total']; ?></td>
-                            </tr>                
-        </table>
+       
  
 </div>
         

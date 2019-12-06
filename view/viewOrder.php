@@ -15,7 +15,7 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-            <h2>Shop</h2>
+            <h2><?php echo "Order #". $order['orderId']; ?></h2>
             <div class="jumbotron">
                
                   
@@ -37,6 +37,16 @@ and open the template in the editor.
                             </div>
                     <?php endforeach; ?>
                           <p><?php echo "Order Total: $". $order['total']; ?></p>  
+                          <p><?php echo "Rental Date: ". $order['date']; ?></p>  
+                          <?php  if($order['status']!='CANCELLED' && $order['status']!='Ready for Pickup') {?>
+                            
+                                <form action="index.php" method="post">
+                                    <input type="hidden" name="action" value="cancelOrderAdmin">
+                                    <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
+                                    <input type="submit" value="Cancel">
+                                </form>
+                            
+                        <?php } ?>
                         
                         
                

@@ -48,16 +48,10 @@ and open the template in the editor.
       </div>
       
       
-    <div class="form-group">        
-      <div class="col-sm-offset-3 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-      </div>
-    </div>
+     
     <div class="form-group">        
       <div class="col-sm-offset-4 col-sm-10">
-        <button type="submit" class="btn btn-primary">Submit</button>
+          <br><button type="submit" class="btn btn-primary">Login</button>
       </div>
     </div>
   </form>

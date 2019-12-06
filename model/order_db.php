@@ -4,20 +4,21 @@ require_once('database.php');
 
 class order_db {
     
-    public static function addOrder($orderId, $userId, $total,$status){
+    public static function addOrder($orderId, $userId, $total,$status, $date){
         
        
         $db = Database::getDB();
         $query = 'INSERT INTO orders
-                 (orderId, userId, total, status)
+                 (orderId, userId, total, status, date)
               VALUES
-                 (:orderId, :userId, :total, :status)';
-        try {
+                 (:orderId, :userId, :total, :status, :date)';
+        
             $statement = $db->prepare($query);
             $statement->bindValue(':orderId', $orderId);
             $statement->bindValue(':userId', $userId);
             $statement->bindValue(':total', $total);
             $statement->bindValue(':status', $status);
+            $statement->bindValue(':date', $date);
 
            
             $statement->execute();
@@ -26,10 +27,8 @@ class order_db {
             // Get the last order ID that was automatically generated
             $orderId = $db->lastInsertId();
             return $orderId;
-        } catch (PDOException $e) {
-            $error_message = $e->getMessage();
-            display_db_error($error_message);
-        }
+         
+        
     }
     
     public static function getOrderById($orderId){
@@ -85,7 +84,7 @@ class order_db {
                   orders ON orderdetails.orderId = orders.orderId JOIN
                   user ON orders.userId = user.userId
                   WHERE orders.userId = :userId
-                  
+                  GROUP BY orderdetails.orderId
                  ';
         
         try {
@@ -161,8 +160,8 @@ class order_db {
     public static function updateOrderStatus($orderId, $status){
         $db = Database::getDB();
         $query = $query = 'UPDATE orders
-              SET status = :status
-
+              SET status = :status,
+                   date = ""
                 WHERE orderId = :orderId';
         
             $statement = $db->prepare($query);
@@ -178,7 +177,8 @@ class order_db {
         $db = Database::getDB();
 
         $query = 'UPDATE orders
-                  SET status = :status
+                  SET status = :status,
+                  date = ""
                   WHERE orderId = :orderId ';
 
         $statement = $db->prepare($query);
@@ -186,6 +186,24 @@ class order_db {
         $statement->bindValue(':status', $status);
 
         $statement->execute();
+        $statement->closeCursor();
+    }
+    
+    public static function checkDate($date){
+        
+        $db = Database::getDB();
+
+        $query = 'SELECT date from orders WHERE date= :date';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':date', $date);
+
+        $statement->execute();
+        //if query returns a row then username exists
+        if ($statement->rowCount() > 0) {
+            return false;
+        } else {
+            return true;
+        }
         $statement->closeCursor();
     }
         

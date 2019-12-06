@@ -12,10 +12,12 @@ and open the template in the editor.
     <body>
         <?php include ('nav.php'); ?> 
         <br>
-        <div class="center">
+        <div class="container">
+            <div class="center">
             <h2>My Orders</h2>
-        </div>
-        <div class="container" >
+            </div>
+        
+        <div class="jumbotron" >
         
             <?php if ($orders !=false){ ?>
             <table class="table table-bordered table-hover table-striped ">
@@ -25,6 +27,7 @@ and open the template in the editor.
                         <th scope="col">OrderId</th>
                         <th scope="col">Total</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Rental Date</th>
                         <th scope="col"></th>
                         
 
@@ -41,6 +44,7 @@ and open the template in the editor.
                             <td><?php echo $o['orderId'] ?> <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>"><div class="details"><?php echo"(Details)"; ?></div></a></td>
                             <td><?php echo "$".$o['total'];?></td>
                             <td><?php echo $o['status'];?></td>
+                             <td><?php echo $o['date'];?></td>
                             
                             
                         <?php  if($o['status']!='CANCELLED' && $o['status']!='Ready for Pickup') {?>
@@ -67,13 +71,14 @@ and open the template in the editor.
             
            <?php } else {?>
             
-            <?php echo $message; ?>
+            <?php echo $message; ?><br>
+            <br><a class="btn btn-primary btn-lg" href="index.php?action=shop" role="button">Shop</a>
             <?php } ?>
             
             
             
             
-       
+       </div>
         </div>
        
         <?php include('footer.php'); ?>
