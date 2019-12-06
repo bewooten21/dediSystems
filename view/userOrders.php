@@ -79,7 +79,7 @@ and open the template in the editor.
             
             
        </div>
-        </div>
+       
        
         <?php include('footer.php'); ?>
     </body>
