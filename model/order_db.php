@@ -108,13 +108,13 @@ class order_db {
         $query= 'SELECT * from orderdetails JOIN
                   orders ON orderdetails.orderId = orders.orderId JOIN
                   user ON orders.userId = user.userId
-                  GROUP BY orders.userId
+                  GROUP BY orderdetails.orderId
                   
                  ';
         
         try {
             $statement = $db->prepare($query);
-            $statement->bindValue(':userId', $userId);
+            
             $statement->execute();
             $orders = $statement->fetchAll();
             $statement->closeCursor();
@@ -125,6 +125,32 @@ class order_db {
             $error_message = $e->getMessage();
             display_db_error($error_message);
         }
+    }
+    
+    public static function getOrderDetailsByOrderId($orderId){
+        
+        $db = Database::getDB();
+        
+        $query= 'SELECT * from orderdetails JOIN
+                 product ON orderdetails.prodId = product.prodId
+                  WHERE orderId= :orderId
+                  
+                 ';
+        
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':orderId', $orderId);
+            $statement->execute();
+            $orderDetails = $statement->fetchAll();
+            $statement->closeCursor();
+
+          
+            return $orderDetails;
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+        
     }
         
     

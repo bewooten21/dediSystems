@@ -73,7 +73,10 @@
                         <ul class="dropdown-menu">
                             <li><a href='index.php?action=viewAccount'>Account</a></li>
                             <?php if (isset($_SESSION['user'])) { ?>
-                                <li><a href='index.php?action=logout'>Logout</a><?php } ?></li>
+                            <li><a href='index.php?action=viewOrders'>View Orders</a></li>
+                            <li><a href='index.php?action=logout'>Logout</a></li>
+                            
+                                <?php } ?>
                         </ul>
                     <?php } ?></li>
                 <?php if (!isset($_SESSION['user'])) { ?>

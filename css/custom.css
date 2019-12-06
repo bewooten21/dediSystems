@@ -5,6 +5,16 @@
 .error{
     color:red;
 }
+.details{
+    color:orangered;
+     text-decoration: none!important;
+     border-bottom-style: none;
+     
+}
+.details a{
+
+   
+}
 
 #white{
     background-color: white;

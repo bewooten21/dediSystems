@@ -418,8 +418,16 @@ switch ($action) {
         break;
     
     case'adminViewOrders':
-        $orders=
+        $orders= order_db::getAllOrders();
         include('view/adminViewOrders.php');
+         die();
+        break;
+    
+    case 'viewOrder':
+        $orderId = filter_input(INPUT_GET, 'id');
+        $order= order_db::getOrderById($orderId);
+        $orderDetails= order_db::getOrderDetailsByOrderId($orderId);
+        include('view/viewOrder.php');
          die();
         break;
         

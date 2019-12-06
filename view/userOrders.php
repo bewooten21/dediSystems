@@ -4,63 +4,59 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-
-
 <html>
     <head>
-        <meta charset="UTF-8">
-        
-        
-        <title>User Comments</title>
-        <?php include ('css/css.php'); ?> 
+        <title>DeDiSystems</title>
+        <?php include('css\css.php'); ?> 
     </head>
     <body>
-        <?php include('nav.php'); ?> 
-        <div class="container">
-            <h2>Shop</h2>
-            <div class="jumbotron">
-                <table class="table table-bordered table-hover table-striped ">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Email</th>
-                            <th scope="col">Message</th>
-                            <th scope="col">Time</th>
+        <?php include ('nav.php'); ?> 
+        
+        <div class="container" >
+            
+            <table class="table table-bordered table-hover table-striped ">
+                <thead class="thead-dark">
+                    <tr>
+                        
+                        <th scope="col">OrderId</th>
+                        <th scope="col">Total</th>
+                        
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($orders as $o) : ?>
+                        <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>">
+                            <tr >
+
+                            
+                            
+                            <td><?php echo $o['orderId'] ?> <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>"><div class="details"><?php echo"(Details)"; ?></div></a></td>
+                            <td><?php echo "$".$o['total'];?></td>
+                            
+                            
+                        
+                            <td>
+                                <form action="index.php" method="post">
+                                    <input type="hidden" name="action" value="deleteThread">
+                                    <input type="hidden" name="threadId"  value="<?php echo $o['orderId']; ?>">
+                                    <input type="submit" value="Cancel">
+                                </form>
+                            </td>
+                            
+                            
                             
 
-
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($orders as $o) : ?>
-                            <tr>
+                        </a>
+                    <?php endforeach; ?>
 
-                                <td><?php echo $c['email']; ?></td>
-                                <td><?php echo $c['message']; ?></td>
-                                <td><?php echo $c['time']; ?></td>
-                                
-                                
-                                <td>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="deleteMessage">
-                                        <input type="hidden" name="id"  value="<?php echo $c['feedbackId']; ?>">
-
-
-                                        <input type="submit" value="Delete">
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-
-                    </tbody>
-                </table>
-
-
-            </div>
+                </tbody>
+            </table>
             
         </div>
-
-        <?php include('./footer.php'); ?>
-
+       
+        <?php include('footer.php'); ?>
     </body>
 </html>
-

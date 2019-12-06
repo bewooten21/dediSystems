@@ -15,14 +15,8 @@
        
         <table>
                             <tr>
-
                                 <td><?php echo $order['total']; ?></td>
-                               
-
-                               
-                            </tr>
-                        
-                          
+                            </tr>                
         </table>
  
 </div>
