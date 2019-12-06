@@ -18,8 +18,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="index.php?action=home">Home</a></li>
+                <li><a href="index.php?action=shop">Shop</a></li>
                 <li><a href="index.php?action=forum">Forum</a></li>
-                <li><a href="index.php?action=shop">Rent PA</a></li>
+                
 
                 <li class="dropdown">
                     <a

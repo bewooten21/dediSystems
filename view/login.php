@@ -13,7 +13,10 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-  <h2>Login</h2>
+  <div class="center">
+            <h2>Login</h2>
+            </div>
+            <div class="jumbotron">
   <form class="form-horizontal" action="index.php" method='post'>
       <input type="hidden" name="action" value="valLogin">
     <div class="<?php echo $unError; ?>">
@@ -58,6 +61,7 @@ and open the template in the editor.
 
 
 </div>
+        </div>
         </div>
       <?php include('./footer.php'); ?>
         
