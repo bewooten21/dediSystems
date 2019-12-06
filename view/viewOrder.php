@@ -43,7 +43,7 @@ and open the template in the editor.
                                 <form action="index.php" method="post">
                                     <input type="hidden" name="action" value="cancelOrderAdmin">
                                     <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Cancel">
+                                    <input type="submit" class="btn btn-primary" value="Cancel">
                                 </form>
                             
                         <?php } ?>

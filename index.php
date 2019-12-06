@@ -413,9 +413,8 @@ switch ($action) {
             }
 
             include('view/cart.php');
-       }
-        if ($checkDate === false) {
-            $dateMessage = "Date already booked";
+       }else if($checkDate === false){
+           $dateMessage = "Date already booked";
             $date = date("Y-m-d");
             $subtotal = 0;
             if (isset($_SESSION['cart'])) {
@@ -426,7 +425,8 @@ switch ($action) {
             }
 
             include('view/cart.php');
-        } else if (isset($_SESSION['user'])) {
+       }
+         else if (isset($_SESSION['user'])) {
             $subtotal = 0;
             foreach ($_SESSION['cart'] as $item) {
                 $subtotal += $item['total'];

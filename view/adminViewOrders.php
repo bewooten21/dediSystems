@@ -50,7 +50,7 @@ and open the template in the editor.
                                 <form action="index.php" method="post">
                                     <input type="hidden" name="action" value="processOrder">
                                     <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Process">
+                                    <input type="submit" class="btn btn-primary" value="Process">
                                 </form>
                             </td>
                              <?php } else if($o['status']==='Recieved/Approved') {?>
@@ -58,7 +58,7 @@ and open the template in the editor.
                                 <form action="index.php" method="post">
                                     <input type="hidden" name="action" value="fullfillOrder">
                                     <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Fullfill">
+                                    <input type="submit" class="btn btn-primary" value="Fullfill">
                                 </form>
                             </td>
                              <?php } else {?>
@@ -69,7 +69,7 @@ and open the template in the editor.
                                 <form action="index.php" method="post">
                                     <input type="hidden" name="action" value="cancelOrder">
                                     <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Cancel">
+                                    <input type="submit" class="btn btn-primary" value="Cancel">
                                 </form>
                             </td>
                             <?php } else {?>

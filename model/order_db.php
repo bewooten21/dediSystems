@@ -178,7 +178,7 @@ class order_db {
 
         $query = 'UPDATE orders
                   SET status = :status,
-                  date = ""
+                  date = "CANCELLED"
                   WHERE orderId = :orderId ';
 
         $statement = $db->prepare($query);

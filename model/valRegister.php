@@ -24,12 +24,22 @@ if ($email === "") {
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
-} else if ($emailVal === false) {
+} else if(preg_match('(^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$)',$email)===0){
+    $email_error="Please enter a valid email address";
+    $emailError = 'form-group has-error has-feedback';
+    $emailClass = "glyphicon glyphicon-remove form-control-feedback";
+    $isValid = FALSE;
+}else if ($emailVal === false) {
     $email_error = "Email assocaited with account";
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
-} else {
+} else if(preg_match('/^.{1,50}$/',$email)===0){
+    $email_error='Must be 50 characters or less';
+    $emailError = 'form-group has-error has-feedback';
+    $emailClass = "glyphicon glyphicon-remove form-control-feedback";
+    $isValid = FALSE;
+}else {
     $emailError = 'form-group has-success has-feedback';
     $emailClass = "glyphicon glyphicon-ok form-control-feedback";
 }
@@ -45,6 +55,17 @@ if ($un === "") {
     $unClass = "glyphicon glyphicon-remove form-control-feedback";
     $unError = "form-group has-error has-feedback";
     $isValid = FALSE;
+}else if(preg_match('/^[A-Za-z_-][A-Za-z0-9_-]*$/',$un)===0){
+    $un_error='Username must begin with a letter';
+    $unClass = "glyphicon glyphicon-remove form-control-feedback";
+    $unError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+}
+else if(preg_match('/^.{4,25}$/',$un)===0){
+    $un_error='Username must be between 4 and 25 characters';
+    $unClass = "glyphicon glyphicon-remove form-control-feedback";
+    $unError = "form-group has-error has-feedback";
+    $isValid = FALSE;
 } else {
     $unClass = "glyphicon glyphicon-ok form-control-feedback";
     $unError = "form-group has-success has-feedback";
@@ -56,7 +77,23 @@ if ($pw === "") {
     $pwClass = "glyphicon glyphicon-remove form-control-feedback";
     $pwError = "form-group has-error has-feedback";
     $isValid = FALSE;
-} else {
+} else if(preg_match('/^.{8,20}$/',$pw)===0){
+    $pw_error ="Must be 8-20 characters";
+    $pwClass = "glyphicon glyphicon-remove form-control-feedback";
+    $pwError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+} else if(preg_match('(.*[A-Z].*)',$pw)===0){
+    $pw_error='Must contain at least one capital letter';
+    $pwClass = "glyphicon glyphicon-remove form-control-feedback";
+    $pwError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+} else if(preg_match('(.*[a-z].*)',$pw)===0){
+    $pw_error='Must contain at least one lower case letter';
+    $pwClass = "glyphicon glyphicon-remove form-control-feedback";
+    $pwError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+}
+else {
     $pwClass = "glyphicon glyphicon-ok form-control-feedback";
     $pwError = "form-group has-success has-feedback";
 }
@@ -83,6 +120,11 @@ if ($fn === "") {
     $fnClass = "glyphicon glyphicon-remove form-control-feedback";
     $fnError = "form-group has-error has-feedback";
     $isValid = FALSE;
+}else if(preg_match('/^.{1,30}$/',$fn)===0){
+    $fn_error ="Must be 30 characters or less";
+    $fnClass = "glyphicon glyphicon-remove form-control-feedback";
+    $fnError = "form-group has-error has-feedback";
+    $isValid = FALSE;
 } else {
     $fnClass = "glyphicon glyphicon-ok form-control-feedback";
     $fnError = "form-group has-success has-feedback";
@@ -93,7 +135,12 @@ if ($ln === "") {
     $lnClass = "glyphicon glyphicon-remove form-control-feedback";
     $lnError = "form-group has-error has-feedback";
     $isValid = FALSE;
-} else {
+} else if(preg_match('/^.{1,30}$/',$ln)===0){
+    $ln_error ="Must be 30 characters or less";
+    $lnClass = "glyphicon glyphicon-remove form-control-feedback";
+    $lnError = "form-group has-error has-feedback";
+    $isValid = FALSE;
+}else {
     $lnClass = "glyphicon glyphicon-ok form-control-feedback";
     $lnError = "form-group has-success has-feedback";
 }
