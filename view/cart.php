@@ -17,11 +17,11 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-            <h2>Shop</h2>
+            <h2>Your Cart</h2>
             <div class="jumbotron">
                
-                  
-                    <?php foreach ($_SESSION['cart'] as $c) : ?>
+                  <?php if(isset($_SESSION['cart']) && $subtotal!=0){?>
+                      <?php foreach ($_SESSION['cart'] as $c) : ?>
                         
                             
                             <div class="thumbnail" id="product">
@@ -30,19 +30,38 @@ and open the template in the editor.
                                      
                                      <li><p><b><?php echo $c['name']; ?></b></p></li>
                                      <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
-                                     <li><p id="fontSize"><?php echo $c['price']. " x " . $c['qty']. "= $" . number_format(($c['price'] * $c['qty']),2); ?></p></li>
+                                     <li><p id="fontSize">$<?php echo $c['price']. " x " . $c['qty']. "= $" . number_format(($c['price'] * $c['qty']),2); ?></p></li>
                                      <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
-                                     <li><a class="btn btn-primary btn-sml" href="index.php?action=Update" role="button">Update</a></li>
-                                     <p></p>
-                                     <li><a class="btn btn-primary btn-sml" href="index.php?action=Remove" role="button">Remove</a></li>
-                                     
+ 
                                      
                                  </ul>
+                                 <form action="index.php" method="post">
+                            <input type="hidden" name="action" value="updateItemInCart">
+                            <input type="hidden" name="id" value="<?php echo $c['id']; ?>">
+                                             <input type="submit" class="btn btn-primary btn-sml" value="Update">
+                                             <select name="quantity">
+                                            
+                                                 <?php for ($i = 0; $i <=  $c['invQty']; $i++){ ?>
+                                                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
+
+                                                 <?php } ?>
+                                        </select>
+                                             
+                                         </form>
+                                 <br>
+                                 
                                  
                                 
                             </div>
                     <?php endforeach; ?>
-                          <p><?php echo "Order Total: $". $_SESSION['cart']['total']; ?></p>  
+                          <p><?php echo "Order Total: $". $subtotal; ?></p> 
+                          <p><a class="btn btn-primary btn-sml" href="index.php?action=submitOrder" role="button">Place Order</a></p>
+                  <?php } else {?>
+                          <?php echo "You have no items in your cart"; ?><br>
+                          <a href='index.php?action=shop'>Back To Shop</a>
+                          <?php } ?>
+                          
+                     
                         
                         
                

@@ -17,7 +17,7 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-            <h2>Shop</h2>
+            <h2>All Products</h2>
             <div class="jumbotron">
                 <table class="table table-bordered table-hover table-striped ">
                     <thead class="thead-dark">

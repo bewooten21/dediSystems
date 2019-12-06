@@ -11,8 +11,13 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
+        <br>
+        <div class="center" >
+        <h2>DediSystems Forum</h2>
+        </div>
+        <div class="container">
         
-        <div class="container" >
+        
             
             <table class="table table-bordered table-hover table-striped ">
                 <thead class="thead-dark">
@@ -54,8 +59,9 @@ and open the template in the editor.
             <?php if (isset($_SESSION['user'])) { ?>
             <a href='index.php?action=newThread'>New Thread</a>
             <?php } ?>
+            
         </div>
-       
+       <br>
         <?php include('footer.php'); ?>
     </body>
 </html>

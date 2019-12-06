@@ -192,7 +192,8 @@ switch ($action) {
 
         $body = filter_input(INPUT_POST, 'body');
         $threadId = filter_input(INPUT_POST, 'threadId');
-        if ($body === "") {
+       if(isset($_SESSION['user'])){
+           if ($body === "") {
             $postError = "Body Required";
             $thread = thread_db::get_thread_byId($threadId);
             $posts = post_db::get_posts_by_threadId($thread->getId());
@@ -208,6 +209,10 @@ switch ($action) {
             thread_db::setPostCount($threadId, $postCount);
             include ('view/viewThread.php');
         }
+       }else{
+            header("Location: index.php?action=login");
+        }
+        
 
         die();
         break;
@@ -348,11 +353,15 @@ switch ($action) {
         break;
 
     case 'viewCart':
+
         $subtotal = 0;
-        foreach ($_SESSION['cart'] as $item) {
-            $subtotal += $item['total'];
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                $subtotal += $item['total'];
+            }
+            $subtotal = number_format($subtotal, 2);
         }
-        $subtotal = number_format($subtotal, 2);
+
         include('view/cart.php');
         die();
         break;
@@ -381,57 +390,114 @@ switch ($action) {
 
     case'viewProduct':
         $productId = filter_input(INPUT_GET, 'id');
-        $product= product_db::getProduct_byId($productId);
+        $product = product_db::getProduct_byId($productId);
         include('view/viewProduct.php');
         die();
         break;
-    
+
     case'submitOrder':
-        if(isset($_SESSION['user'])){
+        if (isset($_SESSION['user'])) {
             $subtotal = 0;
-        foreach ($_SESSION['cart'] as $item) {
-            $subtotal += $item['total'];
-        }
-        $subtotal = number_format($subtotal, 2);
-        $orderId= order_db::addOrder('', $_SESSION['user']->getId() , $subtotal);
-        foreach ($_SESSION['cart'] as $item) {
-            order_db::addOrderDetails('', $orderId, $item['id'], $item['qty']);
-            
-        }
-        if($orderId != false){
-            unset($_SESSION['cart']);
-        }
-        $order= order_db::getOrderById($orderId);
-       
-        include('view/orderSuccess.php');
-        }else{
+            foreach ($_SESSION['cart'] as $item) {
+                $subtotal += $item['total'];
+            }
+            $subtotal = number_format($subtotal, 2);
+            $orderId = order_db::addOrder('', $_SESSION['user']->getId(), $subtotal, 'Processing');
+            foreach ($_SESSION['cart'] as $item) {
+                order_db::addOrderDetails('', $orderId, $item['id'], $item['qty']);
+            }
+            if ($orderId != false) {
+                unset($_SESSION['cart']);
+            }
+            $order = order_db::getOrderById($orderId);
+
+            include('view/orderSuccess.php');
+        } else {
             header("Location: index.php?action=login");
         }
-        
+
         die();
         break;
-        
+
     case 'viewOrders':
-        $orders= order_db::getUserOrders($_SESSION['user']->getId());
+        $orders = order_db::getUserOrders($_SESSION['user']->getId());
+        if($orders===false){
+            $message="You do not currently have any orders";
+        }else{
+            $message="";
+        }
         include('view/userOrders.php');
         die();
         break;
-    
+
     case'adminViewOrders':
-        $orders= order_db::getAllOrders();
+        $orders = order_db::getAllOrders();
         include('view/adminViewOrders.php');
-         die();
+        die();
         break;
-    
+
     case 'viewOrder':
         $orderId = filter_input(INPUT_GET, 'id');
-        $order= order_db::getOrderById($orderId);
-        $orderDetails= order_db::getOrderDetailsByOrderId($orderId);
+        $order = order_db::getOrderById($orderId);
+        $orderDetails = order_db::getOrderDetailsByOrderId($orderId);
         include('view/viewOrder.php');
-         die();
+        die();
         break;
+
+    case'updateItemInCart':
+        $id = filter_input(INPUT_POST, 'id');
+        $qty = (int) filter_input(INPUT_POST, 'quantity');
+        $product = product_db::getProduct_byId($id);
+        if (isset($_SESSION['cart'][$id])) {
+            if ($qty <= 0) {
+                unset($_SESSION['cart'][$id]);
+            } else {
+                unset($_SESSION['cart'][$id]['total']);
+                $_SESSION['cart'][$id]['qty'] = $qty;
+                $total = $_SESSION['cart'][$id]['price'] * $_SESSION['cart'][$id]['qty'];
+                $_SESSION['cart'][$id]['total'] = $total;
+            }
+        }
+        header("Location: index.php?action=viewCart");
+        die();
+        break;
+
+    case 'processOrder':
+        $orderId = filter_input(INPUT_POST, 'orderId');
+        order_db::updateOrderStatus($orderId, 'Recieved/Approved');
+        header("Location: index.php?action=adminViewOrders");
+        die();
+        break;
+        
+    case'fullfillOrder':
+        $orderId = filter_input(INPUT_POST, 'orderId');
+        order_db::updateOrderStatus($orderId, 'Ready for Pickup');
+        header("Location: index.php?action=adminViewOrders");
+        die();
+        break;
+    
+  
+    
+
+    
+    case'cancelOrder':
+        $orderId = filter_input(INPUT_POST, 'orderId');
+        order_db::cancelOrder($orderId, 'CANCELLED');
+        header("Location: index.php?action=viewOrders");
+        die();
+        break;
+    
+    case 'cancelOrderAdmin':
+        $orderId = filter_input(INPUT_POST, 'orderId');
+        order_db::cancelOrder($orderId, 'CANCELLED');
+        header("Location: index.php?action=viewOrders");
+        die();
+        break;
+        
+        
         
         
 }
+
      
 

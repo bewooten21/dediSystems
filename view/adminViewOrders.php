@@ -11,7 +11,10 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
-        
+        <br>
+        <div class="center">
+            <h2>User Orders</h2>
+        </div>
         <div class="container" >
             
             <table class="table table-bordered table-hover table-striped ">
@@ -20,6 +23,9 @@ and open the template in the editor.
                         <th scope="col">User</th>
                         <th scope="col">OrderId</th>
                         <th scope="col">Total</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                        
                         
 
 
@@ -33,30 +39,42 @@ and open the template in the editor.
                             <td><?php echo $o['username'] ?></td>
                             <td><?php echo $o['orderId'] ?> <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>"><div class="details"><?php echo"(Details)"; ?></div></a></td>
                             <td><?php echo $o['total'] ?></td>
+                            <td><?php echo $o['status'] ?></td>
                             
                             
-                             
+                            
+                             <?php if($o['status']==='Processing'){ ?>
                             <td>
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="deleteThread">
-                                    <input type="hidden" name="threadId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Delete">
+                                    <input type="hidden" name="action" value="processOrder">
+                                    <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
+                                    <input type="submit" value="Process">
                                 </form>
                             </td>
+                             <?php } else if($o['status']==='Recieved/Approved') {?>
                             <td>
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="deleteThread">
-                                    <input type="hidden" name="threadId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Delete">
+                                    <input type="hidden" name="action" value="fullfillOrder">
+                                    <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
+                                    <input type="submit" value="Fullfill">
                                 </form>
                             </td>
+                             <?php } else {?>
+                            <td></td>
+                             <?php } ?>
+                            <?php  if($o['status']!='CANCELLED') {?>
                             <td>
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="deleteThread">
-                                    <input type="hidden" name="threadId"  value="<?php echo $o['orderId']; ?>">
-                                    <input type="submit" value="Delete">
+                                    <input type="hidden" name="action" value="cancelOrder">
+                                    <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
+                                    <input type="submit" value="Cancel">
                                 </form>
                             </td>
+                            <?php } else {?>
+                            <td></td>
+                             <?php } ?>
+                            
+                            
                             
                             
 

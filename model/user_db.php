@@ -117,7 +117,7 @@ class user_db {
             $statement->bindValue(':un', $un);
             $statement->bindValue(':email', $email);
             $statement->bindValue(':id', $id);
-            $row_count = $statement->execute();
+            $statement->execute();
             $statement->closeCursor();
             
         

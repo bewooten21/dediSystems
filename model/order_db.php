@@ -4,19 +4,20 @@ require_once('database.php');
 
 class order_db {
     
-    public static function addOrder($orderId, $userId, $total){
+    public static function addOrder($orderId, $userId, $total,$status){
         
        
         $db = Database::getDB();
         $query = 'INSERT INTO orders
-                 (orderId, userId, total)
+                 (orderId, userId, total, status)
               VALUES
-                 (:orderId, :userId, :total)';
+                 (:orderId, :userId, :total, :status)';
         try {
             $statement = $db->prepare($query);
             $statement->bindValue(':orderId', $orderId);
             $statement->bindValue(':userId', $userId);
             $statement->bindValue(':total', $total);
+            $statement->bindValue(':status', $status);
 
            
             $statement->execute();
@@ -94,8 +95,12 @@ class order_db {
             $orders = $statement->fetchAll();
             $statement->closeCursor();
 
-          
-            return $orders;
+          if($statement ->rowCount() > 0){
+              return $orders;
+          }else{
+              return false;
+          }
+            
         } catch (PDOException $e) {
             $error_message = $e->getMessage();
             display_db_error($error_message);
@@ -152,9 +157,39 @@ class order_db {
         }
         
     }
+    
+    public static function updateOrderStatus($orderId, $status){
+        $db = Database::getDB();
+        $query = $query = 'UPDATE orders
+              SET status = :status
+
+                WHERE orderId = :orderId';
         
+            $statement = $db->prepare($query);
+            $statement->bindValue(':status', $status);
+            $statement->bindValue(':orderId', $orderId);
+            $statement->execute();
+            $statement->closeCursor();
+    }
     
+
     
+    public static function cancelOrder($orderId, $status){
+        $db = Database::getDB();
+
+        $query = 'UPDATE orders
+                  SET status = :status
+                  WHERE orderId = :orderId ';
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':orderId', $orderId);
+        $statement->bindValue(':status', $status);
+
+        $statement->execute();
+        $statement->closeCursor();
+    }
+        
+  
     
 }
 

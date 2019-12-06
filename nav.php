@@ -34,7 +34,7 @@
                     <ul class="dropdown-menu">
                         <li><a href='index.php?action=contact'>Contact</a></li>
                         <li><a href='index.php?action=aboutUs'>About Us</a></li>
-                        <li><a href="#">Consulting</a></li>
+                      
                     </ul>
                 </li>
                 <?php if (isset($_SESSION['user'])) { ?>

@@ -11,15 +11,21 @@ and open the template in the editor.
     </head>
     <body>
         <?php include ('nav.php'); ?> 
-        
+        <br>
+        <div class="center">
+            <h2>My Orders</h2>
+        </div>
         <div class="container" >
-            
+        
+            <?php if ($orders !=false){ ?>
             <table class="table table-bordered table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
                         
                         <th scope="col">OrderId</th>
                         <th scope="col">Total</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
                         
 
 
@@ -34,17 +40,21 @@ and open the template in the editor.
                             
                             <td><?php echo $o['orderId'] ?> <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>"><div class="details"><?php echo"(Details)"; ?></div></a></td>
                             <td><?php echo "$".$o['total'];?></td>
+                            <td><?php echo $o['status'];?></td>
                             
                             
-                        
+                        <?php  if($o['status']!='CANCELLED' && $o['status']!='Ready for Pickup') {?>
                             <td>
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="deleteThread">
-                                    <input type="hidden" name="threadId"  value="<?php echo $o['orderId']; ?>">
+                                    <input type="hidden" name="action" value="cancelOrderAdmin">
+                                    <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
                                     <input type="submit" value="Cancel">
                                 </form>
                             </td>
+                        <?php } else  {?>
                             
+                            <td></td>
+                        <?php } ?>
                             
                             
 
@@ -55,6 +65,15 @@ and open the template in the editor.
                 </tbody>
             </table>
             
+           <?php } else {?>
+            
+            <?php echo $message; ?>
+            <?php } ?>
+            
+            
+            
+            
+       
         </div>
        
         <?php include('footer.php'); ?>
