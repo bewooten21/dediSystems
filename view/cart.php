@@ -1,5 +1,7 @@
 
 
+
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -8,52 +10,50 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>DeDiSystems</title>
-        <?php include('css\css.php'); ?> 
+        <meta charset="UTF-8">
+        <title>Shop</title>
+        <?php include ('css/css.php'); ?> 
     </head>
     <body>
-        <?php include ('nav.php'); ?> 
-        <h2>Your Cart</h2>
-        <div class="container" id="shop">
-            
-            <?php foreach ($_SESSION['cart'] as $c) : ?>
-        <table>
-                            <tr>
+        <?php include('nav.php'); ?> 
+        <div class="container">
+            <h2>Shop</h2>
+            <div class="jumbotron">
+               
+                  
+                    <?php foreach ($_SESSION['cart'] as $c) : ?>
+                        
+                            
+                            <div class="thumbnail" id="product">
+                                 <img class="resize"  src='<?php echo $c['image']; ?>' >
+                                 <ul style="list-style-type:none;">
+                                     
+                                     <li><p><b><?php echo $c['name']; ?></b></p></li>
+                                     <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
+                                     <li><p id="fontSize"><?php echo $c['price']. " x " . $c['qty']. "= $" . number_format(($c['price'] * $c['qty']),2); ?></p></li>
+                                     <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
+                                     <li><a class="btn btn-primary btn-sml" href="index.php?action=Update" role="button">Update</a></li>
+                                     <p></p>
+                                     <li><a class="btn btn-primary btn-sml" href="index.php?action=Remove" role="button">Remove</a></li>
+                                     
+                                     
+                                 </ul>
+                                 
+                                
+                            </div>
+                    <?php endforeach; ?>
+                          <p><?php echo "Order Total: $". $_SESSION['cart']['total']; ?></p>  
+                        
+                        
+               
 
-                                <td><?php echo $c['name']; ?></td>
-                                <td><?php echo $c['desc']; ?></td>
-                                <td><?php echo $c['qty']; ?></td>
-                                <td><?php echo $c['price']; ?></td>
-                                <td><?php echo $c['total']; ?></td>
-                                <td>
-                                <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="submitOrder">
-                                        <input type="submit" value="Update">
-                                    </form>
-                                </td>
-                                <td>
-                                <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="submitOrder">
-                                        <input type="submit" value="Delete">
-                                    </form>
-                                </td>
 
-                               
-                            </tr>
-                        <?php endforeach; ?>
-                            <tr>
-                                <td>
-                                <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="submitOrder">
-                                        <input type="submit" value="Place Order">
-                                    </form>
-                                </td>
-                            </tr>
-        </table>
-        <h3><?php echo $subtotal ?></h3>
-            
+
+            </div>
+
         </div>
-       
-        <?php include('footer.php'); ?>
+
+<?php include('./footer.php'); ?>
+
     </body>
 </html>
