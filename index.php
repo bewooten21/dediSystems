@@ -222,7 +222,7 @@ switch ($action) {
         $numOfCols = 4;
         $rowCount = 0;
         $bootstrapColWidth = 12 / $numOfCols;
-        $products = product_db::getAllProducts();
+        $products = product_db::getAllProductsMore0();
         include('view/shop.php');
         die();
         break;

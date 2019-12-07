@@ -14,7 +14,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
 
 
-        <title>Shop</title>
+        <title>All Users</title>
         <?php include ('css/css.php'); ?> 
     </head>
     <body>

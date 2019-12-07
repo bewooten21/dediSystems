@@ -73,6 +73,27 @@ class product_db {
         return $products;
     }
     
+    public static function getAllProductsMore0(){
+        
+        $db = Database::getDB();
+        
+        $query = 'SELECT * from product
+                   WHERE quantity > 0 ';
+        
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $rows = $statement->fetchAll();
+        $products = [];
+        
+        foreach($rows as $value){
+            $products[$value['prodId']]= new product($value['prodId'], $value['price'],$value['image'], $value['prodDesc'], $value['prodName'],$value['quantity']);
+        }
+        $statement->closeCursor();
+        return $products;
+    }
+    
+    
+    
     public static function getProduct_byId($id){
         $db = Database::getDB();
         

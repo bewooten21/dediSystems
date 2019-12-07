@@ -48,6 +48,7 @@ if ($pd === "") {
     $pdClass = "glyphicon glyphicon-remove form-control-feedback";
     $pdError = "form-group has-error has-feedback";
     $isValid = false;
+    
 } else {
     $pdClass = "glyphicon glyphicon-ok form-control-feedback";
     $pdError = "form-group has-success has-feedback";

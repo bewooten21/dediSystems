@@ -34,8 +34,9 @@ and open the template in the editor.
                 </div>
                 <div class="<?php echo $pdError; ?>">
                     <label class="control-label col-sm-4" for="pwd">Product Description:</label>
-                    <div class="col-sm-4">          
-                        <input type="text" class="form-control" id="pd" placeholder="Enter product description" name="pd" value="<?php echo htmlspecialchars($pd); ?>">
+                    <div class="col-sm-4"> 
+                        <textarea class="form-control" id="pd" name="pd"  rows="7"  placeholder="Enter product description" style="width:100%;  resize: none" ><?php echo htmlspecialchars($pd); ?></textarea>  
+                        
                         <span class="<?php echo $pdClass; ?>"></span>
                     </div>
                     <div class="col-sm-2">
