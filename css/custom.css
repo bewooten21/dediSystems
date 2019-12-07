@@ -90,6 +90,9 @@ body{
     
 
 }
+div.hide{
+    display: none;
+}
 
 #postTop{
     border-bottom: 3px dotted black;
