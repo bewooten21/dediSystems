@@ -36,8 +36,8 @@ if($email===$user->getEmail()){
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
-}else if(preg_match('/^.{1,50}$/',$email)===0){
-    $email_error='Must be 50 characters or less';
+}else if(preg_match('/^.{1,40}$/',$email)===0){
+    $email_error='Must be 40 characters or less';
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
@@ -130,6 +130,7 @@ if ($isValid === false) {
 } else if ($isValid === true) {
     user_db::adminUpdate_user($id, $fn, $ln, $un, $email, $roleId);
     $user= user_db::get_user_by_id($id);
+    $_SESSION['user']=$user;
     $message=$user->getFName(). " " . $user->getLName(). " updated!";
     header("Location: index.php?action=viewUsers");
    

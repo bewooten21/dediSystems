@@ -50,7 +50,7 @@ and open the template in the editor.
                         <?php  if($o['status']!='CANCELLED' && $o['status']!='Ready for Pickup') {?>
                             <td>
                                 <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="cancelOrderAdmin">
+                                    <input type="hidden" name="action" value="cancelOrder">
                                     <input type="hidden" name="orderId"  value="<?php echo $o['orderId']; ?>">
                                     <input type="submit" class="btn btn-primary btn-sml" value="Cancel">
                                 </form>
@@ -81,6 +81,8 @@ and open the template in the editor.
        </div>
        
        
-        <?php include('footer.php'); ?>
+        <footer class="footer">
+            <?php include('./footer.php'); ?>
+        </footer>
     </body>
 </html>

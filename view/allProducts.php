@@ -59,14 +59,17 @@ and open the template in the editor.
 
 <?php if (isset($_SESSION['user'])) { ?>
                             <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
-                            <a href="index.php?action=addProduct">Add Product</a>
+                <a class="btn btn-primary btn-lg" href="index.php?action=addProduct" role="button">Add Product</a>
+                            
                             <?php } ?>
                             <?php } ?>
             </div>
             
         </div>
 
+        <footer class="footer">
         <?php include('./footer.php'); ?>
+        </footer>
 
     </body>
 </html>

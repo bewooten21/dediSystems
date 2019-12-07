@@ -31,48 +31,54 @@ and open the template in the editor.
                                         <li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"> <p><?php echo $p->getName(); ?></p></a></li>
                                         <li><p id="fontSize">$<?php echo $p->getPrice(); ?></p></li>
                                         <li><p id="fontSize"><?php echo $p->getDesc(); ?></p></li>
+                                        <li><p id="fontSize"> <select name="quantity">
+                                                    <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$p->getId()])) { ?>
+                                                        <?php for ($i = 1; $i <= (((int) $p->getQuantity()) - ((int) $_SESSION['cart'][(int) $p->getId()]['qty'])); $i++) { ?>
+                                                            <option value="<?php echo $i ?>"><?php echo $i ?></option>
+
+                                                        <?php } ?>
+                                                    <?php } ?>
+
+
+                                                    <?php if (empty($_SESSION['cart']) || isset($_SESSION['cart'][$p->getId()]) === false) { ?>
+                                                        <?php for ($i = 1; $i <= $p->getQuantity(); $i++) { ?>
+
+                                                            <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    <?php } ?>
+                                                </select></p>
+
+                                        </li>
+                                        <li><input type="submit" class="btn btn-primary btn-sml" value="Add To Cart"></li>
+
                                     </ul>
-                                    <p id="fontSize"> <select name="quantity">
-                                            <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$p->getId()])) { ?>
-                                                <?php for ($i = 1; $i <= (((int) $p->getQuantity()) - ((int) $_SESSION['cart'][(int) $p->getId()]['qty'])); $i++) { ?>
-                                                    <option value="<?php echo $i ?>"><?php echo $i ?></option>
-
-                                                <?php } ?>
-                                            <?php } ?>
 
 
-                                            <?php if (empty($_SESSION['cart']) || isset($_SESSION['cart'][$p->getId()]) === false) { ?>
-                                                <?php for ($i = 1; $i <= $p->getQuantity(); $i++) { ?>
-
-                                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            <?php } ?>
-                                        </select></p>
-                                    <input type="submit" class="btn btn-primary btn-sml" value="Add To Cart">
 
                                     </form>
                                 </div>
-                                
+
 
                             </div>
                             <?php
                             $rowCount++;
-                            if ($rowCount % $numOfCols == 0){
-                            echo '</div><div class="row">';}
+                            if ($rowCount % $numOfCols == 0) {
+                                echo '</div><div class="row">';
+                            }
                         }
                         ?>
-                            
+
                 </div>
 
 
-<a class="btn btn-primary btn-lg" href="index.php?action=viewCart"  role="button">Go To Cart</a>
+                <a class="btn btn-primary btn-lg" href="index.php?action=viewCart"  role="button">Go To Cart</a>
             </div>
 
         </div>
-
-        <?php include('./footer.php'); ?>
-
+        <footer class="footer">
+<?php include('./footer.php'); ?>
+        </footer>
     </body>
 </html>

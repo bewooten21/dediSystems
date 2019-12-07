@@ -291,9 +291,14 @@ switch ($action) {
         break;
 
     case 'viewUsers':
-        $message;
+        if($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner"){
+            $message;
         $users = user_db::select_all();
         include('view/allUsers.php');
+        }else{
+            header("Location: index.php?action=viewAccount");
+        }
+        
         die();
         break;
 
@@ -389,6 +394,8 @@ switch ($action) {
         thread_db::setLastPost($threadId, $lastPost);
         thread_db::setPostCount($threadId, $postCount);
         include ('view/viewThread.php');
+        die();
+        break;
 
     case'viewProduct':
         $productId = filter_input(INPUT_GET, 'id');

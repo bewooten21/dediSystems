@@ -10,51 +10,69 @@ and open the template in the editor.
         <?php include('css\css.php'); ?> 
     </head>
     <body>
-        <?php include ('nav.php'); ?> 
-        <div class="container" id="white">
-            <h3><th colspan="4"><?php echo $thread->getSubject(); ?></th></h3>
-            <table class="table table-bordered" >
-  <thead class="thead-dark" >
+        <?php include ('nav.php'); ?> <br>
+        <div class="container" id='white'>
+           
 
-    
-  </thead>
-  <tbody>
-      <?php foreach ($posts as $p) : ?>
-    <tr>
+            <h3><?php echo $thread->getSubject(); ?></h3>
+            <?php if($posts != false){ ?>
+                <table class="table table-bordered" >
 
-      <td id='postTop'><?php echo $p->getAuthor(). "    " . $p->getTime(); ?></td>
+                <?php foreach ($posts as $p) : ?>
 
-    </tr>
-    <tr>
-        <td id='border'><?php echo $p->getBody() ; ?></td>
-    </tr>
-    <tr>
-        <?php if (isset($_SESSION['user'])) { ?>
+                    <tr>
+                    
+                        <td><p class="over" id='postTop'><?php echo $p->getAuthor() . "    " . $p->getTime(); ?></p></td>
+
+                    </tr>
+
+                    
+                        <tr>
+
+                            <td><p class="over" id="border"><?php echo $p->getBody(); ?></p></td>
+
+                        </tr>
+                   
+                    <tr>
+                        <?php if (isset($_SESSION['user'])) { ?>
                             <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
-                            <td>
-                                <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="deletePost">
-                                    <input type="hidden" name="postId"  value="<?php echo $p->getId(); ?>">
-                                    <input type="hidden" name="threadId"  value="<?php echo $thread->getId(); ?>">
-                                    <input type="submit" value="Delete">
-                                </form>
-                            </td>
+                                <td>
+                                    <form action="index.php" method="post">
+                                        <input type="hidden" name="action" value="deletePost">
+                                        <input type="hidden" name="postId"  value="<?php echo $p->getId(); ?>">
+                                        <input type="hidden" name="threadId"  value="<?php echo $thread->getId(); ?>">
+                                        <input type="submit" value="Delete">
+                                    </form>
+                                </td>
                             <?php } ?>
-                            <?php } ?>
-    </tr>
-    <?php endforeach; ?>
-  
-  </tbody>
-</table>
-        
-        <form action="index.php" method="post">
-            <input type="hidden" name="action" value="valPost">
-            <input type="hidden" name="threadId" value="<?php echo $thread->getId() ; ?>">
-        <textarea id="body" name="body" rows="7" style="width:100%;  resize: none" placeholder="<?php echo $postError ?>"></textarea>
-        <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+                        <?php } ?>
+                    </tr>
+
+
+
+
+
+                </table>
+<?php endforeach; ?>
+           <?php  } ?>
+            
+            <br>
+            <form action="index.php" method="post">
+                <input type="hidden" name="action" value="valPost">
+                <input type="hidden" name="threadId" value="<?php echo $thread->getId(); ?>">
+                <textarea id="body" name="body" rows="7" style="width:100%;  resize: none" placeholder="<?php echo $postError ?>"></textarea>
+                <button type="submit" class="btn btn-default">Submit</button><br>
+            </form>
+            <br>
         </div>
+
+
+
+
+
         <br>
-        <?php include('footer.php'); ?>
+        <footer class="footer">
+            <?php include('./footer.php'); ?>
+        </footer>
     </body>
 </html>

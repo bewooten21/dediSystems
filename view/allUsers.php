@@ -13,7 +13,9 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-            <h2>Shop</h2>
+            <div class="center">
+             <h2>All Users</h2>
+            </div>
             <div class="jumbotron">
                 <table class="table table-bordered table-hover table-striped ">
   <thead class="thead-dark">
@@ -50,10 +52,10 @@ and open the template in the editor.
 
 
             </div>
-            <a href="index.php?action=addProduct">Add Product</a>
+            
         </div>
 
+        <footer class="footer">
         <?php include('./footer.php'); ?>
-
-    </body>
+        </footer>
 </html>

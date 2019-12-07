@@ -13,7 +13,11 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-            <h2>Add Product</h2>
+            <div class="center">
+             <h2>Add Product</h2>
+            </div>
+            <div class="jumbotron">
+           
             <form class="form-horizontal" action="index.php" method='post' enctype="multipart/form-data">
                 <input type="hidden" name="action" value="valAddProduct">
                 <div class="<?php echo $nameError; ?>">
@@ -101,9 +105,11 @@ and open the template in the editor.
             </form>
 
 
-
+            </div>
         </div>
+        <footer class="footer">
         <?php include('./footer.php'); ?>
+        </footer>
 
     </body>
 </html>

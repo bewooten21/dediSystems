@@ -22,9 +22,11 @@ and open the template in the editor.
 
                 <?php if (isset($_SESSION['cart']) && $subtotal != 0) { ?>
                     <?php foreach ($_SESSION['cart'] as $c) : ?>
-
-
+                        <a class="btn btn-primary btn-sml" href="index.php?action=shop" role="button">Back To Shop</a>
+                        <br>
+                        <br>
                         <div class="thumbnail" id="product">
+
                             <img class="resize"  src='<?php echo $c['image']; ?>' >
                             <ul style="list-style-type:none;">
 
@@ -34,22 +36,22 @@ and open the template in the editor.
                                 <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
                                 <li>
                                     <form action="index.php" method="post">
-                                <input type="hidden" name="action" value="updateItemInCart">
-                                <input type="hidden" name="id" value="<?php echo $c['id']; ?>">
-                                <input type="submit" class="btn btn-primary btn-sml" value="Update">
-                                <select name="quantity">
+                                        <input type="hidden" name="action" value="updateItemInCart">
+                                        <input type="hidden" name="id" value="<?php echo $c['id']; ?>">
+                                        <input type="submit" class="btn btn-primary btn-sml" value="Update">
+                                        <select name="quantity">
 
-                                    <?php for ($i = 0; $i <= $c['invQty']; $i++) { ?>
-                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                            <?php for ($i = 0; $i <= $c['invQty']; $i++) { ?>
+                                                <option value="<?php echo $i ?>"><?php echo $i ?></option>
 
-                                    <?php } ?>
-                                </select>
+                                            <?php } ?>
+                                        </select>
 
-                            </form>
+                                    </form>
                                 </li>
 
                             </ul>
-                            
+
                             <br>
 
 
@@ -64,11 +66,11 @@ and open the template in the editor.
                         Rental Date:
                         <input type="date" name="rentalDate" min="<?php echo $date; ?>"><br>
                         <br>
-                        
+
                         <input type="submit" class="btn btn-primary btn-sml" value="Place Order">
                     </form>
-                    
-                    
+
+
                 <?php } else { ?>
                     <?php echo "Your cart is empty"; ?><br>
                     <br><a class="btn btn-primary btn-lg" href="index.php?action=shop" role="button">Shop</a>
@@ -86,7 +88,9 @@ and open the template in the editor.
 
         </div>
 
-        <?php include('./footer.php'); ?>
+        <footer class="footer">
+            <?php include('./footer.php'); ?>
+        </footer>
 
     </body>
 </html>

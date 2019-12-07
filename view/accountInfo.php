@@ -93,7 +93,8 @@
  
   </div>
 </div>
-        </div>
-    <?php include('footer.php'); ?>
-    </body>
+        
+    <footer class="footer">
+        <?php include('./footer.php'); ?>
+        </footer>
 </html>

@@ -20,6 +20,7 @@ class post_db {
         $statement->bindValue(':body', $body);
 
         $statement->execute();
+       
         $statement->closeCursor();
     }
 
@@ -36,13 +37,19 @@ class post_db {
         $statement->execute();
         $rows = $statement->fetchAll();
         $posts = [];
-
-        foreach ($rows as $value) {
+        
+        if ($statement->rowCount() > 0){
+            foreach ($rows as $value) {
             $posts[$value['postId']] = new post($value['postId'], $value['threadId'], $value['body'], $value['author'], $value['time']);
         }
         $statement->closeCursor();
 
         return $posts;
+        }else{
+            return false;
+        }
+
+        
     }
     
     public static function deletePost($id){

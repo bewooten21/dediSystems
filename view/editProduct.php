@@ -13,7 +13,9 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-  <h2>Edit <?php echo $product->getName() ; ?></h2>
+            <h2>Edit <?php echo $product->getName() ; ?></h2>
+            <div class="jumbotron">
+  
   <form class="form-horizontal" action="index.php" method='post' enctype="multipart/form-data">
       <input type="hidden" name="action" value="valUpdateProduct">
       <input type="hidden" name="id" value="<?php echo $product->getId(); ?>">
@@ -114,7 +116,10 @@ and open the template in the editor.
 
 
         </div>
-      <?php include('./footer.php'); ?>
+        </div>
+              <footer class="footer">
+        <?php include('./footer.php'); ?>
+        </footer>
         
     </body>
 </html>

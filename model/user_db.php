@@ -262,5 +262,22 @@ class user_db {
             return false;
         }
     }
+    
+    public static function getLastUserInsertUserId(){
+        
+         $db = Database::getDB();
+         
+         $query= 'select userId from user where 
+                 userId =(SELECT LAST_INSERT_ID())';
+         
+         $statement = $db->prepare($query);
+         
+         $statement->execute();
+         $id = $statement->fetch();
+         $statement->closeCursor();
+         
+         return $id['userId'];
+        
+    }
 }
 

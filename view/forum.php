@@ -19,6 +19,7 @@ and open the template in the editor.
 
 
 
+
             <table class="table table-bordered table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
@@ -57,14 +58,16 @@ and open the template in the editor.
                 </tbody>
             </table>
             <?php if (isset($_SESSION['user'])) { ?>
-                <a href='index.php?action=newThread'>New Thread</a>
+                <a class="btn btn-primary btn-sml" href="index.php?action=newThread" role="button">New Thread</a>
+
             <?php } ?>
 
         </div>
+
         <br>
-        <div class="footer">
-            <?php include('footer.php'); ?>
-        </div>
+        <footer class="footer">
+            <?php include('./footer.php'); ?>
+        </footer>
     </body>
 
 </html>

@@ -13,7 +13,9 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
-  <h2>New Thread</h2>
+            <h2>New Thread</h2>
+            <div class="jumbotron">
+  
 <form class="form-horizontal" action="index.php" method="post">
     <input type="hidden" name="action" value="valNewThread">
   <div class="<?php echo $sError; ?>">
@@ -49,7 +51,10 @@ and open the template in the editor.
         
 </form>
   </div>
-             <?php include('./footer.php'); ?>
+        </div>
+             <footer class="footer">
+        <?php include('./footer.php'); ?>
+        </footer>
         
     </body>
 </html>

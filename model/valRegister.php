@@ -34,8 +34,8 @@ if ($email === "") {
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
-} else if(preg_match('/^.{1,50}$/',$email)===0){
-    $email_error='Must be 50 characters or less';
+} else if(preg_match('/^.{1,40}$/',$email)===0){
+    $email_error='Must be 40 characters or less';
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
@@ -156,12 +156,13 @@ if ($isValid === false) {
     $options = ['cost' => 11];
     $hashedPw = password_hash($pw, PASSWORD_BCRYPT, $options);
 
-     user_db::add_user('', $un, $hashedPw, $email, $fn, $ln, 1);
-     $user = user_db::get_user_by_username($un);
+     user_db::add_user('', $un, $hashedPw, $email, $fn, $ln, 3);
+     $userId= user_db::getLastUserInsertUserId();
+     $user = user_db::get_user_by_id($userId);
 
     $_SESSION['user'] = $user;
     
-    include('home.php');
+    header("Location: index.php?action=viewAccount");
 }
         
 

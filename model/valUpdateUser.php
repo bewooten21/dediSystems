@@ -34,8 +34,8 @@ if($email===$_SESSION['user']->getEmail()){
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
-}else if(preg_match('/^.{1,50}$/',$email)===0){
-    $email_error='Must be 50 characters or less';
+}else if(preg_match('/^.{1,40}$/',$email)===0){
+    $email_error='Must be 40 characters or less';
     $emailError = 'form-group has-error has-feedback';
     $emailClass = "glyphicon glyphicon-remove form-control-feedback";
     $isValid = FALSE;
