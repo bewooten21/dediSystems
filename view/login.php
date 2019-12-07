@@ -49,6 +49,7 @@ and open the template in the editor.
                         <div class="col-sm-4">          
                             <a href='index.php?action=register'>Don't have an account? Register here</a>
                         </div>
+                    </div>
 
 
 
@@ -57,10 +58,12 @@ and open the template in the editor.
                                 <br><button type="submit" class="btn btn-primary">Login</button>
                             </div>
                         </div>
+                        
+                        
                 </form>
 
 
-            </div>
+            
         </div>
     </div>
     <footer class="footer">
