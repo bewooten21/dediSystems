@@ -32,9 +32,9 @@ and open the template in the editor.
                                         <img class="resize"  src='<?php echo $p->getImage(); ?>' >
                                         <ul style="list-style-type:none;">
 
-                                            <li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"> <p><?php echo $p->getName(); ?></p></a></li>
+                                            <li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"><?php echo mb_strimwidth($p->getName(), 0, 40, "..."); ?></p></a></li>
                                             <li><p id="fontSize">$<?php echo $p->getPrice(); ?></p></li>
-
+                                                
                                             <li><p id="fontSize"> <select name="quantity">
                                                         <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$p->getId()])) { ?>
                                                             <?php for ($i = 1; $i <= (((int) $p->getQuantity()) - ((int) $_SESSION['cart'][(int) $p->getId()]['qty'])); $i++) { ?>
