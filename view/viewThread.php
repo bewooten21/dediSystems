@@ -12,50 +12,50 @@ and open the template in the editor.
     <body>
         <?php include ('nav.php'); ?> <br>
         <div class="container" id='white'>
-           
+
 
             <h3><?php echo $thread->getSubject(); ?></h3>
-            <?php if($posts != false){ ?>
-                <table class="table table-bordered" >
+            <?php if ($posts != false) { ?>
 
+<table class="table table-bordered" >
                 <?php foreach ($posts as $p) : ?>
-
-                    <tr>
                     
-                        <td><p class="over" id='postTop'><?php echo $p->getAuthor() . "    " . $p->getTime(); ?></p></td>
+                        <tr>
 
-                    </tr>
+                            <td><p class="over" id='postTop'><?php echo $p->getAuthor() . "    " . $p->getTime(); ?></p></td>
 
-                    
+                        </tr>
+
+
                         <tr>
 
                             <td><p class="over" id="border"><?php echo $p->getBody(); ?></p></td>
 
                         </tr>
-                   
-                    <tr>
-                        <?php if (isset($_SESSION['user'])) { ?>
-                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
-                                <td>
-                                    <form action="index.php" method="post">
-                                        <input type="hidden" name="action" value="deletePost">
-                                        <input type="hidden" name="postId"  value="<?php echo $p->getId(); ?>">
-                                        <input type="hidden" name="threadId"  value="<?php echo $thread->getId(); ?>">
-                                        <input type="submit" value="Delete">
-                                    </form>
-                                </td>
+
+                        <tr>
+                            <?php if (isset($_SESSION['user'])) { ?>
+                                <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                                    <td>
+                                        <form action="index.php" method="post">
+                                            <input type="hidden" name="action" value="deletePost">
+                                            <input type="hidden" name="postId"  value="<?php echo $p->getId(); ?>">
+                                            <input type="hidden" name="threadId"  value="<?php echo $thread->getId(); ?>">
+                                            <input type="submit" value="Delete">
+                                        </form>
+                                    </td>
+                                <?php } ?>
                             <?php } ?>
-                        <?php } ?>
-                    </tr>
+                        </tr>
 
 
 
 
 
-                </table>
-<?php endforeach; ?>
-           <?php  } ?>
-            
+                    </table>
+                <?php endforeach; ?>
+            <?php } ?>
+
             <br>
             <form action="index.php" method="post">
                 <input type="hidden" name="action" value="valPost">
