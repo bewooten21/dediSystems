@@ -21,8 +21,9 @@ and open the template in the editor.
             <div class="jumbotron">
 
                 <?php if (isset($_SESSION['cart']) && $subtotal != 0) { ?>
+                <a class="btn btn-primary btn-sml" href="index.php?action=shop" role="button">Back To Shop</a>
                     <?php foreach ($_SESSION['cart'] as $c) : ?>
-                        <a class="btn btn-primary btn-sml" href="index.php?action=shop" role="button">Back To Shop</a>
+                        
                         <br>
                         <br>
                         <div class="thumbnail" id="product">
@@ -51,10 +52,6 @@ and open the template in the editor.
                                 </li>
 
                             </ul>
-
-                            <br>
-
-
 
                         </div>
                     <?php endforeach; ?>

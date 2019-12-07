@@ -10,6 +10,7 @@ and open the template in the editor.
         <title>Shop</title>
         <?php include ('css/css.php'); ?>
         <script src="js/showDesc.js"></script>
+
     </head>
     <body>
         <main id="select">
@@ -31,9 +32,9 @@ and open the template in the editor.
                                         <img class="resize"  src='<?php echo $p->getImage(); ?>' >
                                         <ul style="list-style-type:none;">
 
-                                            <!--<li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"> <p><?php echo $p->getName(); ?></p></a></li>-->
+                                            <li><a href="index.php?action=viewProduct&amp;id=<?php echo $p->getID(); ?>"> <p id="fontSize"> <p><?php echo $p->getName(); ?></p></a></li>
                                             <li><p id="fontSize">$<?php echo $p->getPrice(); ?></p></li>
-                                            <li><div class="hide"><p id="fontSize"><?php echo $p->getDesc(); ?></p></div><a href="#">Show More</a></li>
+
                                             <li><p id="fontSize"> <select name="quantity">
                                                         <?php if (isset($_SESSION['cart'], $_SESSION['cart'][$p->getId()])) { ?>
                                                             <?php for ($i = 1; $i <= (((int) $p->getQuantity()) - ((int) $_SESSION['cart'][(int) $p->getId()]['qty'])); $i++) { ?>
@@ -54,7 +55,8 @@ and open the template in the editor.
                                                     </select></p>
 
                                             </li>
-                                            <li><input type="submit" class="btn btn-primary btn-sml" value="Add To Cart"></li>
+
+                                            <li><input type="submit"  class="btn btn-primary btn-sml" value="Add To Cart"></li>
 
                                         </ul>
 
