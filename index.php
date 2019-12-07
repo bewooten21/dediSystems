@@ -40,7 +40,7 @@ switch ($action) {
         break;
 
     case 'aboutUs':
-     
+
         include('view/aboutUs.php');
         die();
         break;
@@ -98,7 +98,7 @@ switch ($action) {
         break;
     case 'logout':
         session_destroy();
-        unset($_SESSION['username']);
+        unset($_SESSION['user']);
         header("Location: home.php");
 
     case 'forum':
@@ -109,8 +109,13 @@ switch ($action) {
         break;
 
     case 'viewAccount':
-        $message = "";
-        include('view/account.php');
+        if (isset($_SESSION['user'])) {
+            $message = "";
+            include('view/account.php');
+        } else {
+            header("Location: view/login.php");
+        }
+
         die();
         break;
     case 'accountInfo':
@@ -291,14 +296,14 @@ switch ($action) {
         break;
 
     case 'viewUsers':
-        if($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner"){
+        if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") {
             $message;
-        $users = user_db::select_all();
-        include('view/allUsers.php');
-        }else{
+            $users = user_db::select_all();
+            include('view/allUsers.php');
+        } else {
             header("Location: index.php?action=viewAccount");
         }
-        
+
         die();
         break;
 
@@ -409,8 +414,8 @@ switch ($action) {
         $rentalDate = filter_input(INPUT_POST, 'rentalDate');
         $rentalDate = date("m-d-Y", strtotime($rentalDate));
         $checkDate = order_db::checkDate($rentalDate);
-       if($rentalDate==='01-01-1970'){
-           $dateMessage = "Enter valid date";
+        if ($rentalDate === '01-01-1970') {
+            $dateMessage = "Enter valid date";
             $date = date("Y-m-d");
             $subtotal = 0;
             if (isset($_SESSION['cart'])) {
@@ -421,8 +426,8 @@ switch ($action) {
             }
 
             include('view/cart.php');
-       }else if($checkDate === false){
-           $dateMessage = "Date already booked";
+        } else if ($checkDate === false) {
+            $dateMessage = "Date already booked";
             $date = date("Y-m-d");
             $subtotal = 0;
             if (isset($_SESSION['cart'])) {
@@ -433,8 +438,7 @@ switch ($action) {
             }
 
             include('view/cart.php');
-       }
-         else if (isset($_SESSION['user'])) {
+        } else if (isset($_SESSION['user'])) {
             $subtotal = 0;
             foreach ($_SESSION['cart'] as $item) {
                 $subtotal += $item['total'];

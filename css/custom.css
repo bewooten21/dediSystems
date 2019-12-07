@@ -39,8 +39,19 @@
   
 }
 
+.centerborder{
+    text-align: center;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-bottom: 5px;
+    
+}
 
 
+ul.horiz li {
+  display:inline;
+}
 
 
 #product{
@@ -106,15 +117,7 @@ div.hide{
 
 
 
-.sidebarUsers{
-    float: left;
-    clear: left;
-    margin: 0 15px 0 0;
-    width: 30%;
-    padding-left: 5px;
 
-
-}
 
 .center{
 
