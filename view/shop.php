@@ -54,6 +54,7 @@ and open the template in the editor.
 
                                     </form>
                                 </div>
+                                
 
                             </div>
                             <?php
@@ -62,10 +63,11 @@ and open the template in the editor.
                             echo '</div><div class="row">';}
                         }
                         ?>
+                            
                 </div>
 
 
-
+<a class="btn btn-primary btn-lg" href="index.php?action=viewCart"  role="button">Go To Cart</a>
             </div>
 
         </div>

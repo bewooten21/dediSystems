@@ -32,10 +32,8 @@ and open the template in the editor.
                                 <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
                                 <li><p id="fontSize">$<?php echo $c['price'] . " x " . $c['qty'] . "= $" . number_format(($c['price'] * $c['qty']), 2); ?></p></li>
                                 <li><p id="fontSize"><?php echo $c['desc']; ?></p></li>
-
-
-                            </ul>
-                            <form action="index.php" method="post">
+                                <li>
+                                    <form action="index.php" method="post">
                                 <input type="hidden" name="action" value="updateItemInCart">
                                 <input type="hidden" name="id" value="<?php echo $c['id']; ?>">
                                 <input type="submit" class="btn btn-primary btn-sml" value="Update">
@@ -48,6 +46,10 @@ and open the template in the editor.
                                 </select>
 
                             </form>
+                                </li>
+
+                            </ul>
+                            
                             <br>
 
 

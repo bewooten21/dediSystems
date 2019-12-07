@@ -40,6 +40,7 @@ switch ($action) {
         break;
 
     case 'aboutUs':
+     
         include('view/aboutUs.php');
         die();
         break;

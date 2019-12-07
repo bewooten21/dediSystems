@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include('nav.php') ?>
+    <br>
     
     <div class="jumbotron" id="white">
   <div class="container" id="account">
@@ -16,6 +17,7 @@
        
  
 </div>
+    </div>
         
     <?php include('footer.php'); ?>
     </body>
