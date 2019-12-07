@@ -63,7 +63,15 @@ img.resize {
   height: 75px;
 }
 
-
+body{
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
+}
+#bottom{
+    height: 100%;
+    padding-bottom: 0;
+}
 #border{
     
     border-bottom: 1px solid black;

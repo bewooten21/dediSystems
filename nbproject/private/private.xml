@@ -5,24 +5,31 @@
         <group>
             <file>file:/C:/xampp/htdocs/dediSystems/view/adminViewOrders.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/model/valUpdateUser.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/allProducts.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/index.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valRegister.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/account.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/accountInfo.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/viewUserComments.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valResetPw.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/viewOrder.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/valAdminUpdateUser.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/nav.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/model/order_db.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/css/custom.css</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/editUser.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/footer.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/login.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/userOrders.php</file>
-            <file>file:/C:/xampp/htdocs/dediSystems/view/resetPw.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/view/allUsers.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/shop.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/aboutUs.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/model/valRegister.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/allProducts.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/orderSuccess.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/model/valResetPw.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/viewUserComments.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/viewOrder.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/model/valAdminUpdateUser.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/model/order_db.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/forum.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/editUser.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/resetPw.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/viewProduct.php</file>
             <file>file:/C:/xampp/htdocs/dediSystems/model/valUserMessage.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/home.php</file>
+            <file>file:/C:/xampp/htdocs/dediSystems/view/cart.php</file>
         </group>
     </open-files>
 </project-private>

@@ -13,12 +13,12 @@ and open the template in the editor.
         <?php include ('nav.php'); ?> 
         <br>
         <div class="center" >
-        <h2>DediSystems Forum</h2>
+            <h2>DediSystems Forum</h2>
         </div>
-        <div class="container">
-        
-        
-            
+        <div class="container" id="bottom">
+
+
+
             <table class="table table-bordered table-hover table-striped ">
                 <thead class="thead-dark">
                     <tr>
@@ -38,18 +38,18 @@ and open the template in the editor.
                             <td><?php echo $t->getAuthor(); ?></td>
                             <td><?php echo $t->getPosts(); ?></td>
                             <td><?php echo $t->getTime(); ?></td>
-                             <?php if (isset($_SESSION['user'])) { ?>
-                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
-                            <td>
-                                <form action="index.php" method="post">
-                                    <input type="hidden" name="action" value="deleteThread">
-                                    <input type="hidden" name="threadId"  value="<?php echo $t->getId(); ?>">
-                                    <input type="submit" value="Delete">
-                                </form>
-                            </td>
+                            <?php if (isset($_SESSION['user'])) { ?>
+                                <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                                    <td>
+                                        <form action="index.php" method="post">
+                                            <input type="hidden" name="action" value="deleteThread">
+                                            <input type="hidden" name="threadId"  value="<?php echo $t->getId(); ?>">
+                                            <input type="submit" value="Delete">
+                                        </form>
+                                    </td>
+                                <?php } ?>
                             <?php } ?>
-                            <?php } ?>
-                            
+
 
                         </tr>
                     <?php endforeach; ?>
@@ -57,14 +57,14 @@ and open the template in the editor.
                 </tbody>
             </table>
             <?php if (isset($_SESSION['user'])) { ?>
-            <a href='index.php?action=newThread'>New Thread</a>
+                <a href='index.php?action=newThread'>New Thread</a>
             <?php } ?>
-            
+
         </div>
-       <br>
-        
-    <?php include('footer.php'); ?>
-    
+        <br>
+        <div class="footer">
+            <?php include('footer.php'); ?>
+        </div>
     </body>
-   
+
 </html>
