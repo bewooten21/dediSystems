@@ -28,7 +28,7 @@ and open the template in the editor.
 
                         <?php } ?>
                     <?php } ?>
-                </div>
+                </div><br>
                 <table class="table table-bordered table-hover table-striped ">
                     <thead class="thead-dark">
                         <tr>
@@ -64,6 +64,7 @@ and open the template in the editor.
 
                     </tbody>
                 </table>
+            
                 <div class="center">
                     <?php if (isset($_SESSION['user'])) { ?>
                         <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
@@ -71,7 +72,7 @@ and open the template in the editor.
 
                         <?php } ?>
                     <?php } ?>
-                </div>
+                </div><br>
             </div>
 
         

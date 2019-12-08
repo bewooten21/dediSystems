@@ -18,7 +18,7 @@ and open the template in the editor.
         <?php include('nav.php'); ?> 
         <div class="container">
             <h2>User Messages</h2>
-            <div class="jumbotron">
+
                 <table class="table table-bordered table-hover table-striped ">
                     <thead class="thead-dark">
                         <tr>
@@ -57,7 +57,7 @@ and open the template in the editor.
 
             </div>
             
-        </div>
+        
 
         <footer class="footer">
             <?php include('./footer.php'); ?>
