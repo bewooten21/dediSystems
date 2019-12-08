@@ -17,7 +17,7 @@ and open the template in the editor.
             <h3><?php echo $thread->getSubject(); ?></h3>
             <?php if ($posts != false) { ?>
 
-<table class="table table-bordered" >
+<table class="table " >
                 <?php foreach ($posts as $p) : ?>
                     
                         <tr>
@@ -25,11 +25,8 @@ and open the template in the editor.
                             <td><p class="over" id='postTop'><?php echo $p->getAuthor() . "    " . $p->getTime(); ?></p></td>
 
                         </tr>
-
-
                         <tr>
-
-                            <td><p class="over" id="border"><?php echo $p->getBody(); ?></p></td>
+                                    <td><p class="over" id="border"><?php echo $p->getBody(); ?></p></td>
 
                         </tr>
 

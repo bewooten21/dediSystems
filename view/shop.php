@@ -16,9 +16,9 @@ and open the template in the editor.
         <main id="select">
 
             <?php include('nav.php'); ?> 
-            <div class="container">
+            <div class="container" >
                 <h2>Shop</h2>
-                <div class="jumbotron">
+                <div class="jumbotron" >
                     <div class="row">
                         <?php
                         foreach ($products as $p) {

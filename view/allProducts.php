@@ -21,6 +21,12 @@ and open the template in the editor.
             <h2>All Products</h2>
             </div>
             <div class="jumbotron">
+                <?php if (isset($_SESSION['user'])) { ?>
+                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                <a class="btn btn-primary btn-sml" href="index.php?action=addProduct" role="button">Add Product</a>
+                            
+                            <?php } ?>
+                            <?php } ?>
                 <table class="table table-bordered table-hover table-striped ">
                     <thead class="thead-dark">
                         <tr>
