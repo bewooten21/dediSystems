@@ -7,49 +7,45 @@
     <body>
         <?php include('nav.php') ?>
 
-        <div class="jumbotron">
-            <div class="container">
-                <h1></h1>
-                <p>
+        <div class="container">
+            <br>
+            <div class="jumbotron">
 
-                </p>
-                <br />
-                <p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button"></a>
-                    <a class="btn btn-primary btn-lg" href="#" role="button"></a>
-                </p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="center">
+                            <img  class ="resizehome" src='images/favicon.png' >
+                        </p>
+
+                        <h3></h3>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="center">
+                            <p>
+                                <img  src='images/logo.jpg' >
+                            </p>
+                            <p class>
+
+                                Here at DediSystems we strive to be your first choice for your PA Rental needs. By offering top of the line equipment, we stand out from the rest.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <p class="center">
+                            <img class ="resizehome" src='images/favicon.png' >
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
-                <h3></h3>
-                <p>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh.
-                </p>
-            </div>
-            <div class="col-md-4">
-                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                <h3></h3>
-                <p>Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Lorem ipsum dolor.</p>
-            </div>
-            <div class="col-md-4">
-                <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
-                <h3></h3>
-                <p>
-                    Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh.
-                </p>
-            </div>
-        </div>
-        
-    </div>
-    <div class="footer">
 
-        <?php include('footer.php'); ?>
-    </div>
-</body>
+
+        <div class="footer">
+
+            <?php include('footer.php'); ?>
+        </div>
+    </body>
 </html>

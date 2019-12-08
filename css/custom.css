@@ -74,6 +74,15 @@ img.resize {
     border-radius: 20px;
 
 }
+img.resizehome {
+    width:150px;
+    height:150px;
+    border-radius: 2px;
+
+}
+
+
+
 
 .footer{
     position: relative;
