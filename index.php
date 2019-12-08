@@ -119,13 +119,17 @@ switch ($action) {
             include('view/account.php');
             //if user isnt logged in, send to login
         } else {
-            header("Location: view/login.php");
+             header("Location: index.php?action=login");
         }
 
         die();
         break;
     case 'accountInfo':
-        //set error variables for accountINfo/update page
+        //if user is logged in send to account
+        if (isset($_SESSION['user'])) {
+            
+            //if user isnt logged in, send to login
+            //set error variables for accountINfo/update page
         $emailClass = "";
         $emailError = "form-group";
         $unClass = "";
@@ -148,6 +152,10 @@ switch ($action) {
         $fn = '';
         $ln = '';
         include('view/accountInfo.php');
+        } else {
+            header("Location: index.php?action=login");
+        }
+        
         die();
         break;
 
