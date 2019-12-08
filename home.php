@@ -28,7 +28,7 @@
                             </p>
                             <p class>
 
-                                Here at DediSystems we strive to be your first choice for your PA Rental needs. By offering top of the line equipment, we stand out from the rest.
+                                Here at DediSystems we strive to be your first choice for PA Rentals. By offering top of the line equipment, we stand out from the rest.
                             </p>
                         </div>
                     </div>
