@@ -529,11 +529,11 @@ switch ($action) {
         break;
 
     case 'viewOrders':
-        //get all order associated with current user
+        //get all order associated with current user, returns true if found
         $orders = order_db::getUserOrders($_SESSION['user']->getId());
         //if no orders exist
         if ($orders === false) {
-            $message = "You do not currently have any orders";
+            $message = "You do not currently have any orders.";
         } else {
             $message = "";
         }

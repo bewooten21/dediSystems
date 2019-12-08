@@ -9,8 +9,8 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        
-        
+
+
         <title>All Products</title>
         <?php include ('css/css.php'); ?> 
     </head>
@@ -18,15 +18,17 @@ and open the template in the editor.
         <?php include('nav.php'); ?> 
         <div class="container">
             <div class="center">
-            <h2>All Products</h2>
+                <h2>All Products</h2>
             </div>
             <div class="jumbotron">
-                <?php if (isset($_SESSION['user'])) { ?>
-                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
-                <a class="btn btn-primary btn-sml" href="index.php?action=addProduct" role="button">Add Product</a>
-                            
-                            <?php } ?>
-                            <?php } ?>
+                <div class="center">
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                            <a class="btn btn-primary btn-sml" href="index.php?action=addProduct" role="button">Add Product</a>
+
+                        <?php } ?>
+                    <?php } ?>
+                </div>
                 <table class="table table-bordered table-hover table-striped ">
                     <thead class="thead-dark">
                         <tr>
@@ -62,19 +64,20 @@ and open the template in the editor.
 
                     </tbody>
                 </table>
+                <div class="center">
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
+                            <a class="btn btn-primary btn-lg" href="index.php?action=addProduct" role="button">Add Product</a>
 
-<?php if (isset($_SESSION['user'])) { ?>
-                            <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
-                <a class="btn btn-primary btn-lg" href="index.php?action=addProduct" role="button">Add Product</a>
-                            
-                            <?php } ?>
-                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
+                </div>
             </div>
-            
+
         </div>
 
         <footer class="footer">
-        <?php include('./footer.php'); ?>
+            <?php include('./footer.php'); ?>
         </footer>
 
     </body>
