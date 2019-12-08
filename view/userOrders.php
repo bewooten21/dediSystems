@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>DeDiSystems</title>
+        <title>Your Orders</title>
         <?php include('css\css.php'); ?> 
     </head>
     <body>

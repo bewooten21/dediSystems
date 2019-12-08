@@ -20,10 +20,11 @@ and open the template in the editor.
     <body>
         <?php include('nav.php'); ?> 
         <div class="container">
+            
             <div class="center">
                 <h2>All Users</h2>
             </div>
-            <div class="jumbotron">
+            
                 <table class="table table-bordered table-hover table-striped ">
                     <thead class="thead-dark">
                         <tr>
@@ -60,7 +61,7 @@ and open the template in the editor.
                
             </div>
 
-        </div>
+        
 
         <footer class="footer">
             <?php include('./footer.php'); ?>

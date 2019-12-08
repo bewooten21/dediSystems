@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Shop</title>
+        <title><?php echo $product->getName(); ?></title>
         <?php include ('css/css.php'); ?> 
     </head>
     <body>

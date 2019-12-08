@@ -20,7 +20,7 @@ and open the template in the editor.
             <div class="center">
                 <h2>All Products</h2>
             </div>
-            <div class="jumbotron">
+           
                 <div class="center">
                     <?php if (isset($_SESSION['user'])) { ?>
                         <?php if ($_SESSION['user']->getRole() === "admin" || $_SESSION['user']->getRole() === "owner") { ?>
@@ -74,7 +74,7 @@ and open the template in the editor.
                 </div>
             </div>
 
-        </div>
+        
 
         <footer class="footer">
             <?php include('./footer.php'); ?>
