@@ -85,6 +85,7 @@ class order_db {
                   user ON orders.userId = user.userId
                   WHERE orders.userId = :userId
                   GROUP BY orderdetails.orderId
+                  ORDER BY orders.date ASC
                  ';
         
         try {
@@ -113,6 +114,7 @@ class order_db {
                   orders ON orderdetails.orderId = orders.orderId JOIN
                   user ON orders.userId = user.userId
                   GROUP BY orderdetails.orderId
+                  ORDER BY orders.date ASC
                   
                  ';
         

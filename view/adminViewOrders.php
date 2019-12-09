@@ -39,7 +39,7 @@ and open the template in the editor.
                             
                             <td><?php echo $o['username'] ?></td>
                             <td><?php echo $o['orderId'] ?> <a href="index.php?action=viewOrder&amp;id=<?php echo $o['orderId']; ?>"><div class="details"><?php echo"(Details)"; ?></div></a></td>
-                            <td><?php echo $o['total'] ?></td>
+                            <td><?php echo "$".$o['total'] ?></td>
                             <td><?php echo $o['status'] ?></td>
                             <td><?php echo $o['date'] ?></td>
                             

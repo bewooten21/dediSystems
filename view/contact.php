@@ -14,6 +14,7 @@
 
 <p class="center" style="color:red; font-weight: bold;">We would love to hear your opinions and make DeDiSystems your goto for PA Rentals for the future </p>
 <h2 class="center"><?php echo $success ; ?></h2>
+
                 <form class="form-horizontal" action="index.php" method="post">
                     <input type="hidden" name="action" value="valUserMessage">
                     <div class="<?php echo $emailError; ?>">
