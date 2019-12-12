@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <title>Admin View Orders</title>
-        <?php include('css\css.php'); ?> 
+        <?php include('css/css.php'); ?> 
     </head>
     <body>
         <?php include ('nav.php'); ?> 
