@@ -19,8 +19,8 @@
                 <form class="form-horizontal" action="index.php" method='post'>
                     <input type="hidden" name="action" value="valUpdateUser">
 
-                    <div class="<?php echo $emailError; ?>">
-                        <label class="control-label col-sm-4" for="email">Email:</label>
+                    <div class="<?php echo $emailError; ?>" >
+                        <label class="control-label col-sm-4"  for="email">Email:</label>
                         <div class="col-sm-4">
                             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="<?php echo htmlspecialchars($_SESSION['user']->getEmail()); ?>" >
                             <span class="<?php echo $emailClass; ?>"></span>
